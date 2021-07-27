@@ -1,0 +1,1407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.3.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.10.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E811106E-62AF-4F33-B5CA-D069E675A95A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Foundation</RootNamespace>
+    <AssemblyName>Foundation</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44381</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FoolproofValidation, Version=0.9.5851.39121, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Foolproof.0.9.4518\lib\net45\FoolproofValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mapster, Version=7.2.0.0, Culture=neutral, PublicKeyToken=2f39883af23c29a8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.7.2.0\lib\net45\Mapster.dll</HintPath>
+    </Reference>
+    <Reference Include="Mapster.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=e64997d676a9c1d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mapster.Core.1.2.0\lib\net45\Mapster.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.2.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.2.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.2.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.2.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.2.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.7\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Lookups\CountriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Lookups\StatusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Lookups\RegionsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\Lookups\CitiesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\MembershipPlansController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\MembershipsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ClientsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ContactsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ContactTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\EnquiriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\EnquiryTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\InvitationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ItemsPropertiesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ItemTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ProjectsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\PropertyTypesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\EnquiryAttachmentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ResponseAttachmentsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ResponsesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\PublicUsersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\AdministratorsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\RolesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\ResourcesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Admin\Models\AccountViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\ContactCategoryModels.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\ItemTypeModels.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\EnquiryTypeModels.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\CountryModels.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\StatusModels.cs" />
+    <Compile Include="Areas\Admin\Models\MembershipModels.cs" />
+    <Compile Include="Areas\Admin\Models\MembershipPlanModels.cs" />
+    <Compile Include="Areas\Admin\Models\SettingsModels.cs" />
+    <Compile Include="Areas\Admin\ModelValidation.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\RegionModels.cs" />
+    <Compile Include="Areas\Admin\Models\Lookups\CityModels.cs" />
+    <Compile Include="Areas\Admin\Models\PublicUserModels.cs" />
+    <Compile Include="Areas\Admin\Models\AdministratorModels.cs" />
+    <Compile Include="Areas\Admin\Models\SecurityViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\SharedModels.cs" />
+    <Compile Include="Areas\Front\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Front\FrontAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicResponseAttachmentsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicEnquiryAttachmentsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicItemsPropertiesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicContactsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicContactTypesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicInboxController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicInvitationsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicMembershipsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicPropertyTypesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicResponsesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicItemsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicItemTypesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicEnquiryTypesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicEnquiriesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicProjectsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicClientsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicAccountController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicRegionsController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicResourcesController.cs" />
+    <Compile Include="Areas\Public\Controllers\API\PublicStatusController.cs" />
+    <Compile Include="Areas\Public\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Public\Models\RecipientResponseAttachmentModels.cs" />
+    <Compile Include="Areas\Public\Models\EnquiryAttachmentModels.cs" />
+    <Compile Include="Areas\Public\Models\ItemsDynamicPropertyModels.cs" />
+    <Compile Include="Areas\Public\Models\InboxModels.cs" />
+    <Compile Include="Areas\Public\Models\MembershipModels.cs" />
+    <Compile Include="Areas\Public\Models\ResponseModels.cs" />
+    <Compile Include="Areas\Public\Models\RecipientModels.cs" />
+    <Compile Include="Areas\Public\Models\ContactModels.cs" />
+    <Compile Include="Areas\Public\Models\InvitationModels.cs" />
+    <Compile Include="Areas\Public\Models\ItemModels.cs" />
+    <Compile Include="Areas\Public\Models\ContactTypeModels.cs" />
+    <Compile Include="Areas\Public\Models\ItemTypeModels.cs" />
+    <Compile Include="Areas\Public\Models\EnquiryTypeModels.cs" />
+    <Compile Include="Areas\Public\Models\EnquiryModels.cs" />
+    <Compile Include="Areas\Public\Models\ProjectModels.cs" />
+    <Compile Include="Areas\Public\Models\ClientModels.cs" />
+    <Compile Include="Areas\Public\Models\PublicUserModels.cs" />
+    <Compile Include="Areas\Public\Models\PropertyTypeModels.cs" />
+    <Compile Include="Areas\Public\PublicAreaRegistration.cs" />
+    <Compile Include="Areas\Public\Models\CityModels.cs" />
+    <Compile Include="Areas\Public\Models\AccountModels.cs" />
+    <Compile Include="Areas\Public\Models\RegionModels.cs" />
+    <Compile Include="Areas\Public\Models\SharedModels.cs" />
+    <Compile Include="Areas\Public\Models\StatusModels.cs" />
+    <Compile Include="Areas\Admin\Controllers\API\AccountController.cs" />
+    <Compile Include="Areas\Public\ModelValidation.cs" />
+    <Compile Include="Core\Activation.cs" />
+    <Compile Include="Core\ApiPublicController.cs" />
+    <Compile Include="Core\ApiAdminController.cs" />
+    <Compile Include="Core\ApiLocalizationMessageHandler.cs" />
+    <Compile Include="Core\ApiLocalizedActionSelector.cs" />
+    <Compile Include="Core\BaseApiController.cs" />
+    <Compile Include="Core\BaseMvcController.cs" />
+    <Compile Include="Core\CustomAuthorize.cs" />
+    <Compile Include="Core\CustomBundleOrderer.cs" />
+    <Compile Include="Core\CustomRegularExpression.cs" />
+    <Compile Include="Core\DateManager.cs" />
+    <Compile Include="Core\DateTimeModelBinder.cs" />
+    <Compile Include="Core\EmptyRouteConstraint.cs" />
+    <Compile Include="Core\Extensions.cs" />
+    <Compile Include="Core\HeaderOAuthBearerProvider.cs" />
+    <Compile Include="Core\Helper.cs" />
+    <Compile Include="Core\MailService.cs" />
+    <Compile Include="Core\MvcAdminController.cs" />
+    <Compile Include="Core\MvcLocalizedControllerActivator.cs" />
+    <Compile Include="Core\QueryStringOAuthBearerProvider.cs" />
+    <Compile Include="Core\Recaptcha.cs" />
+    <Compile Include="Core\ResponseMsg.cs" />
+    <Compile Include="Core\AppSettings.cs" />
+    <Compile Include="Core\SmsService.cs" />
+    <Compile Include="Core\TemplatesManager.cs" />
+    <Compile Include="Core\UploadHelper.cs" />
+    <Compile Include="Core\Validation.cs" />
+    <Compile Include="Core\WebApiDateTimeModelBinder.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\AccountModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Resources\Admin\Errors.Designer.cs">
+      <DependentUpon>Errors.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Admin\Shared.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Shared.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Admin\Models.Designer.cs">
+      <DependentUpon>Models.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Front.Designer.cs">
+      <DependentUpon>Front.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Admin\Views.Designer.cs">
+      <DependentUpon>Views.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Admin\Roles.Designer.cs">
+      <DependentUpon>Roles.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Admin\Menu.Designer.cs">
+      <DependentUpon>Menu.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Errors.Designer.cs">
+      <DependentUpon>Errors.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Public\Errors.Designer.cs">
+      <DependentUpon>Errors.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Public\Menu.Designer.cs">
+      <DependentUpon>Menu.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Public\Models.Designer.cs">
+      <DependentUpon>Models.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Public\Roles.Designer.cs">
+      <DependentUpon>Roles.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Public\Shared.Designer.cs">
+      <DependentUpon>Shared.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Public\Views.Designer.cs">
+      <DependentUpon>Views.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Mail.Designer.cs">
+      <DependentUpon>Mail.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Views.Designer.cs">
+      <DependentUpon>Views.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Models.Designer.cs">
+      <DependentUpon>Models.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Menu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Shared.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Shared.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Templates\ResponseTemplateModel.cs" />
+    <Compile Include="Templates\OtpTemplateModel.cs" />
+    <Compile Include="Templates\RegistrationTemplateModel.cs" />
+    <Compile Include="Templates\InvitationTemplateModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\core\controllers\core.profile.ctrl.js" />
+    <Content Include="App\core\directives\table-refresh.dir.js" />
+    <Content Include="App\main\controllers\main.clients.ctrl.js" />
+    <Content Include="App\main\controllers\main.clients.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.contact-types.ctrl.js" />
+    <Content Include="App\main\controllers\main.contacts.ctrl.js" />
+    <Content Include="App\main\controllers\main.contacts.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.attachments.js" />
+    <Content Include="App\main\controllers\main.enquiries.basic.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.invitations.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.items.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.preview.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiries.responses.ctrl.js" />
+    <Content Include="App\main\controllers\main.enquiry-types.ctrl.js" />
+    <Content Include="App\main\controllers\main.inbox.invitation.attachments.js" />
+    <Content Include="App\main\controllers\main.inbox.invitations.ctrl.js" />
+    <Content Include="App\main\controllers\main.inbox.invitations.info.ctrl.js" />
+    <Content Include="App\main\controllers\main.inbox.invitations.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.inbox.invitations.response.attachments.ctrl.js" />
+    <Content Include="App\main\controllers\main.inbox.invitations.response.ctrl.js" />
+    <Content Include="App\main\controllers\main.item-types.ctrl.js" />
+    <Content Include="App\main\controllers\main.items-properties.ctrl.js" />
+    <Content Include="App\main\controllers\main.items.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.projects.ctrl.js" />
+    <Content Include="App\main\controllers\main.projects.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.public-users.membership.current.ctrl.js" />
+    <Content Include="App\main\services\main.clients.svc.js" />
+    <Content Include="App\main\services\main.contact-types.svc.js" />
+    <Content Include="App\main\services\main.contacts.svc.js" />
+    <Content Include="App\main\services\main.enquiries.svc.js" />
+    <Content Include="App\main\services\main.enquiry-attachments.svc.js" />
+    <Content Include="App\main\services\main.enquiry-types.svc.js" />
+    <Content Include="App\main\services\main.invitations.svc.js" />
+    <Content Include="App\main\services\main.item-types.svc.js" />
+    <Content Include="App\main\services\main.items-properties.svc.js" />
+    <Content Include="App\main\services\main.items.svc.js" />
+    <Content Include="App\main\services\main.projects.svc.js" />
+    <Content Include="App\main\services\main.property-types.svc.js" />
+    <Content Include="App\main\services\main.response-attachments.svc.js" />
+    <Content Include="App\main\services\main.responses.svc.js" />
+    <Content Include="App\views\core\profile.html" />
+    <Content Include="App\views\core\profile.password.html" />
+    <Content Include="App\views\main\clients.html" />
+    <Content Include="App\views\main\clients.list.html" />
+    <Content Include="App\views\main\clients.view.html" />
+    <Content Include="App\views\main\contact-types.html" />
+    <Content Include="App\views\main\contacts.html" />
+    <Content Include="App\views\main\contacts.list.html" />
+    <Content Include="App\views\main\contacts.view.html" />
+    <Content Include="App\views\main\enquiries.attachments.html" />
+    <Content Include="App\views\main\enquiries.basic.html" />
+    <Content Include="App\views\main\enquiries.basic.view.html" />
+    <Content Include="App\views\main\enquiries.html" />
+    <Content Include="App\views\main\enquiries.invitations.html" />
+    <Content Include="App\views\main\enquiries.invitations.list.html" />
+    <Content Include="App\views\main\enquiries.invitations.view.html" />
+    <Content Include="App\views\main\enquiries.items.html" />
+    <Content Include="App\views\main\enquiries.list.html" />
+    <Content Include="App\views\main\enquiries.preview.html" />
+    <Content Include="App\views\main\enquiries.responses.compare.html" />
+    <Content Include="App\views\main\enquiries.responses.html" />
+    <Content Include="App\views\main\enquiries.responses.list.html" />
+    <Content Include="App\views\main\enquiry-types.html" />
+    <Content Include="App\views\main\inbox.invitations.attachments.html" />
+    <Content Include="App\views\main\inbox.invitations.html" />
+    <Content Include="App\views\main\inbox.invitations.info.html" />
+    <Content Include="App\views\main\inbox.invitations.list.html" />
+    <Content Include="App\views\main\inbox.invitations.response.attachments.html" />
+    <Content Include="App\views\main\inbox.invitations.response.html" />
+    <Content Include="App\views\main\item-types.html" />
+    <Content Include="App\views\main\items-properties.html" />
+    <Content Include="App\views\main\items.list.html" />
+    <Content Include="App\views\main\projects.html" />
+    <Content Include="App\views\main\projects.list.html" />
+    <Content Include="App\views\main\projects.view.html" />
+    <Content Include="App\views\main\public-users.membership.current.html" />
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="wwwroot\css\10-admin-lte-ltr.css" />
+    <Content Include="wwwroot\css\10-admin-lte-rtl.css" />
+    <Content Include="wwwroot\images\check-box-empty.png" />
+    <Content Include="wwwroot\images\content-bg.png" />
+    <Content Include="wwwroot\images\excel.png" />
+    <Content Include="wwwroot\images\file.png" />
+    <Content Include="wwwroot\images\icon.png" />
+    <Content Include="wwwroot\images\logo.png" />
+    <Content Include="wwwroot\images\person.jpg" />
+    <Content Include="wwwroot\images\photo.png" />
+    <Content Include="wwwroot\lib\angular-breadcrumb.js" />
+    <Content Include="wwwroot\lib\angularjs-dropdown-multiselect.js" />
+    <Content Include="wwwroot\lib\file-saver.js" />
+    <Content Include="wwwroot\lib\js-xlsx.core.js" />
+    <Content Include="wwwroot\lib\lodash.js" />
+    <Content Include="wwwroot\lib\ngGeolocation.js" />
+    <Content Include="wwwroot\lib\tableexport.js" />
+    <Content Include="wwwroot\_front\images\excel.png" />
+    <Content Include="wwwroot\_front\images\one-shot.png" />
+    <Content Include="wwwroot\_front\images\time.png" />
+    <Content Include="_public\main\controllers\main.inbox.invitations.response.attachments.ctrl.js" />
+    <Content Include="_public\main\controllers\main.inbox.invitation.attachments.js" />
+    <Content Include="_public\main\controllers\main.items.list.ctrl.js" />
+    <Content Include="_public\main\controllers\main.membership.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.preview.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.attachments.js" />
+    <Content Include="_public\main\services\main.response-attachments.svc.js" />
+    <Content Include="_public\main\services\main.enquiry-attachments.svc.js" />
+    <Content Include="_public\main\services\main.membership.svc.js" />
+    <Content Include="_public\main\services\main.status.svc.js" />
+    <Content Include="_public\views\core\registeration-form.html" />
+    <Content Include="_public\views\core\login-form.html" />
+    <Content Include="_public\views\core\profile.password.html" />
+    <Content Include="_public\views\main\inbox.invitations.response.attachments.html" />
+    <Content Include="_public\views\main\inbox.invitations.attachments.html" />
+    <Content Include="_public\views\main\enquiries.attachments.html" />
+    <Content Include="_public\views\main\items.list.html" />
+    <Content Include="_public\views\main\membership.current.html" />
+    <Content Include="_public\views\main\membership.html" />
+    <Content Include="_public\views\main\enquiries.preview.html" />
+    <Content Include="_public\views\main\items-properties.html" />
+    <Content Include="Templates\otp.cshtml" />
+    <Content Include="Templates\response.cshtml" />
+    <Content Include="Templates\invitation.cshtml" />
+    <Content Include="wwwroot\css\700-handsontable.full-ltr.css" />
+    <Content Include="wwwroot\css\800-ar-rtl.css" />
+    <Content Include="wwwroot\css\700-handsontable.full-rtl.css" />
+    <Content Include="wwwroot\lib\handsontable.full.js" />
+    <Content Include="wwwroot\css\00-bootstrap-ltr.css" />
+    <Content Include="wwwroot\css\00-bootstrap-rtl.css" />
+    <Content Include="wwwroot\css\100-ie10-viewport-bug-workaround-ltr.css" />
+    <Content Include="wwwroot\css\100-ie10-viewport-bug-workaround-rtl.css" />
+    <Content Include="wwwroot\css\200-common-ltr.css" />
+    <Content Include="wwwroot\css\200-common-rtl.css" />
+    <Content Include="wwwroot\css\300-font-awesome-ltr.css" />
+    <Content Include="wwwroot\css\300-font-awesome-rtl.css" />
+    <Content Include="wwwroot\css\400-angular-moment-picker-ltr.css" />
+    <Content Include="wwwroot\css\400-angular-moment-picker-rtl.css" />
+    <Content Include="wwwroot\css\500-ui-select-ltr.css" />
+    <Content Include="wwwroot\css\500-ui-select-rtl.css" />
+    <Content Include="wwwroot\css\600-angularjs-color-picker-ltr.css" />
+    <Content Include="wwwroot\css\600-angularjs-color-picker-rtl.css" />
+    <Content Include="wwwroot\lib\ngHandsontable.js" />
+    <Content Include="wwwroot\_front\css\10-bootstrap.css" />
+    <Content Include="wwwroot\_front\css\20-font-awesome.css" />
+    <Content Include="wwwroot\_front\css\40-main.css" />
+    <Content Include="wwwroot\_front\css\30-prettyPhoto.css" />
+    <Content Include="wwwroot\_front\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\_front\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\_front\images\ico\favicon.ico" />
+    <Content Include="wwwroot\_front\images\logo.png" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item1.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item2.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item3.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item4.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item5.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item6.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\full\item7.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item1.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item2.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item3.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item4.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item5.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item6.jpg" />
+    <Content Include="wwwroot\_front\images\portfolio\thumb\item7.jpg" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\loader.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\sprite.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="wwwroot\_front\images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="wwwroot\_front\images\shapebootstrap.png" />
+    <Content Include="wwwroot\_front\images\slider-bg.jpg" />
+    <Content Include="wwwroot\_front\images\team1.jpg" />
+    <Content Include="wwwroot\_front\images\team2.jpg" />
+    <Content Include="wwwroot\_front\images\team3.jpg" />
+    <Content Include="wwwroot\_front\index.html" />
+    <Content Include="wwwroot\_front\js\20-bootstrap.js" />
+    <Content Include="wwwroot\_front\js\html5shiv.js" />
+    <Content Include="wwwroot\_front\js\30-jquery.isotope.js" />
+    <Content Include="wwwroot\_front\js\10-jquery.js" />
+    <Content Include="wwwroot\_front\js\40-jquery.prettyPhoto.js" />
+    <Content Include="wwwroot\_front\js\50-main.js" />
+    <Content Include="wwwroot\_front\js\respond.min.js" />
+    <Content Include="wwwroot\_public\css\700-public-ltr.css" />
+    <Content Include="wwwroot\_public\css\700-public-rtl.css" />
+    <Content Include="wwwroot\_public\css\800-ar-rtl.css" />
+    <Content Include="wwwroot\css\X-40-angular-snap-only-ltr.css" />
+    <Content Include="wwwroot\css\X-bootstrap-theme.css" />
+    <Content Include="wwwroot\css\X20-paper-ltr.css" />
+    <Content Include="wwwroot\css\X20-paper-rtl.css" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\avatar.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\avatar04.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\avatar2.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\avatar3.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\avatar5.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\boxed-bg.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\boxed-bg.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\american-express.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\cirrus.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\mastercard.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\mestro.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\paypal.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\paypal2.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\credit\visa.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\default-50x50.gif" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\icons.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\photo1.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\photo2.png" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\photo3.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\photo4.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user1-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user2-160x160.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user3-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user4-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user5-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user6-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user7-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\admin-lte\img\user8-128x128.jpg" />
+    <Content Include="wwwroot\_public\images\check-box-empty.png" />
+    <Content Include="wwwroot\_public\images\content-bg.png" />
+    <Content Include="wwwroot\_public\images\file.png" />
+    <Content Include="wwwroot\_public\images\icon.png" />
+    <Content Include="wwwroot\_public\images\logo.png" />
+    <Content Include="wwwroot\_public\images\person.jpg" />
+    <Content Include="wwwroot\_public\images\photo.png" />
+    <Content Include="_public\app.js" />
+    <Content Include="_public\core\app.core.js" />
+    <Content Include="_public\core\controllers\home.js" />
+    <Content Include="_public\core\controllers\login.ctrl.js" />
+    <Content Include="_public\core\controllers\core.profile.ctrl.js" />
+    <Content Include="_public\core\controllers\modal.js" />
+    <Content Include="_public\core\directives\file-bind.js" />
+    <Content Include="_public\core\directives\loggedin.js" />
+    <Content Include="_public\core\directives\table-refresh.dir.js" />
+    <Content Include="_public\core\directives\mh-search.dir.js" />
+    <Content Include="_public\core\directives\permissions.js" />
+    <Content Include="_public\core\filters\dummy.js" />
+    <Content Include="_public\core\services\core.account.svc.js" />
+    <Content Include="_public\core\services\core.http-interceptors.js" />
+    <Content Include="_public\core\services\core.modal.js" />
+    <Content Include="_public\core\services\core.resources.svc.js" />
+    <Content Include="_public\core\services\core.settings.js" />
+    <Content Include="_public\core\services\core.system.svc.js" />
+    <Content Include="_public\main\app.main.js" />
+    <Content Include="_public\main\controllers\main.enquiries.responses.ctrl.js" />
+    <Content Include="_public\main\controllers\main.inbox.invitations.response.ctrl.js" />
+    <Content Include="_public\main\controllers\main.inbox.invitations.info.ctrl.js" />
+    <Content Include="_public\main\controllers\main.inbox.invitations.ctrl.js" />
+    <Content Include="_public\main\controllers\main.inbox.invitations.list.ctrl.js" />
+    <Content Include="_public\main\controllers\main.contacts.ctrl.js" />
+    <Content Include="_public\main\controllers\main.contact-types.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.invitations.ctrl.js" />
+    <Content Include="_public\main\controllers\main.items-properties.ctrl.js" />
+    <Content Include="_public\main\controllers\main.item-types.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiry-types.ctrl.js" />
+    <Content Include="_public\main\controllers\main.projects.ctrl.js" />
+    <Content Include="_public\main\controllers\main.clients.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.list.ctrl.js" />
+    <Content Include="_public\main\controllers\main.contacts.list.ctrl.js" />
+    <Content Include="_public\main\controllers\main.projects.list.ctrl.js" />
+    <Content Include="_public\main\controllers\main.clients.list.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.basic.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.ctrl.js" />
+    <Content Include="_public\main\controllers\main.enquiries.items.ctrl.js" />
+    <Content Include="_public\main\directives\dummy.js" />
+    <Content Include="_public\main\filters\dummy.js" />
+    <Content Include="_public\main\services\main.invitations.svc.js" />
+    <Content Include="_public\main\services\main.contact-types.svc.js" />
+    <Content Include="_public\main\services\main.items-properties.svc.js" />
+    <Content Include="_public\main\services\main.property-types.svc.js" />
+    <Content Include="_public\main\services\main.item-types.svc.js" />
+    <Content Include="_public\main\services\main.responses.svc.js" />
+    <Content Include="_public\main\services\main.items.svc.js" />
+    <Content Include="_public\main\services\main.enquiry-types.svc.js" />
+    <Content Include="_public\main\services\main.enquiries.svc.js" />
+    <Content Include="_public\main\services\main.contacts.svc.js" />
+    <Content Include="_public\main\services\main.projects.svc.js" />
+    <Content Include="_public\main\services\main.clients.svc.js" />
+    <Content Include="_public\ui\app.ui.js" />
+    <Content Include="_public\ui\controllers\dummy.js" />
+    <Content Include="_public\ui\directives\dummy.js" />
+    <Content Include="_public\ui\filters\dummy.js" />
+    <Content Include="_public\ui\services\ui.svc.js" />
+    <Content Include="_public\views\core\profile.form.html" />
+    <Content Include="_public\views\core\profile.html" />
+    <Content Include="_public\views\core\profile.view.html" />
+    <Content Include="_public\views\core\home.html" />
+    <Content Include="_public\views\core\login.html" />
+    <Content Include="_public\views\core\modal.alert.html" />
+    <Content Include="_public\views\main\cities.html" />
+    <Content Include="_public\views\main\enquiries.responses.list.html" />
+    <Content Include="_public\views\main\enquiries.responses.html" />
+    <Content Include="_public\views\main\enquiries.responses.compare.html" />
+    <Content Include="_public\views\main\inbox.invitations.response.html" />
+    <Content Include="_public\views\main\inbox.invitations.info.html" />
+    <Content Include="_public\views\main\inbox.invitations.html" />
+    <Content Include="_public\views\main\inbox.invitations.list.html" />
+    <Content Include="_public\views\main\contacts.view.html" />
+    <Content Include="_public\views\main\contacts.form.html" />
+    <Content Include="_public\views\main\contacts.html" />
+    <Content Include="_public\views\main\contacts.list.html" />
+    <Content Include="_public\views\main\contact-types.html" />
+    <Content Include="_public\views\main\enquiries.invitations.view.html" />
+    <Content Include="_public\views\main\enquiries.invitations.form.html" />
+    <Content Include="_public\views\main\enquiries.invitations.html" />
+    <Content Include="_public\views\main\enquiries.invitations.list.html" />
+    <Content Include="_public\views\main\item-types.html" />
+    <Content Include="_public\views\main\projects.html" />
+    <Content Include="_public\views\main\projects.form.html" />
+    <Content Include="_public\views\main\enquiries.list.html" />
+    <Content Include="_public\views\main\projects.list.html" />
+    <Content Include="_public\views\main\projects.view.html" />
+    <Content Include="_public\views\main\enquiry-types.html" />
+    <Content Include="_public\views\main\map.html" />
+    <Content Include="_public\views\main\clients.html" />
+    <Content Include="_public\views\main\clients.form.html" />
+    <Content Include="_public\views\main\clients.list.html" />
+    <Content Include="_public\views\main\clients.view.html" />
+    <Content Include="_public\views\main\enquiries.html" />
+    <Content Include="_public\views\main\enquiries.basic.html" />
+    <Content Include="_public\views\main\enquiries.basic.form.html" />
+    <Content Include="_public\views\main\enquiries.basic.view.html" />
+    <Content Include="_public\views\main\enquiries.items.html" />
+    <Content Include="_public\views\main\membership.list.html" />
+    <Content Include="_public\views\main\regions.html" />
+    <Content Include="_public\views\main\status.html" />
+    <Content Include="_public\views\ui\layout.alerts.html" />
+    <Content Include="_public\views\ui\layout.content-header.html" />
+    <Content Include="_public\views\ui\layout.footer.html" />
+    <Content Include="_public\views\ui\layout.main-header.html" />
+    <Content Include="_public\views\ui\layout.side-menu.html" />
+    <Content Include="_public\views\ui\modal.confirm.html" />
+    <Content Include="_public\views\ui\modal.message.html" />
+    <Content Include="App\app.js" />
+    <Content Include="App\core\app.core.js" />
+    <Content Include="App\core\controllers\core.administrators.ctrl.js" />
+    <Content Include="App\core\controllers\core.administrators.list.ctrl.js" />
+    <Content Include="App\core\controllers\home.js" />
+    <Content Include="App\core\controllers\login.js" />
+    <Content Include="App\core\controllers\modal.js" />
+    <Content Include="App\core\directives\file-bind.js" />
+    <Content Include="App\core\directives\permissions.js" />
+    <Content Include="App\core\directives\loggedin.js" />
+    <Content Include="App\core\filters\dummy.js" />
+    <Content Include="App\core\services\core.resources.svc.js" />
+    <Content Include="App\core\services\core.account.svc.js" />
+    <Content Include="App\core\services\core.system.svc.js" />
+    <Content Include="App\core\services\core.http-interceptors.js" />
+    <Content Include="App\core\services\core.modal.js" />
+    <Content Include="App\core\services\core.settings.js" />
+    <Content Include="App\core\services\core.administrators.svc.js" />
+    <Content Include="App\main\app.main.js" />
+    <Content Include="App\main\controllers\main.countries.ctrl.js" />
+    <Content Include="App\main\controllers\main.membership-plans.ctrl.js" />
+    <Content Include="App\main\controllers\main.membership-plans.list.ctrl.js" />
+    <Content Include="App\main\controllers\main.public-users.membership.ctrl.js" />
+    <Content Include="App\main\controllers\main.status.ctrl.js" />
+    <Content Include="App\main\controllers\main.public-users.ctrl.js" />
+    <Content Include="App\main\controllers\main.regions.ctrl.js" />
+    <Content Include="App\main\controllers\main.cities.ctrl.js" />
+    <Content Include="App\main\controllers\main.public-users.basic.ctrl.js" />
+    <Content Include="App\main\controllers\main.public-users.list.ctrl.js" />
+    <Content Include="App\main\directives\dummy.js" />
+    <Content Include="App\main\filters\dummy.js" />
+    <Content Include="App\main\services\main.countries.svc.js" />
+    <Content Include="App\main\services\main.membership.svc.js" />
+    <Content Include="App\main\services\main.membership-plans.svc.js" />
+    <Content Include="App\main\services\main.cities.svc.js" />
+    <Content Include="App\main\services\main.status.svc.js" />
+    <Content Include="App\main\services\main.regions.svc.js" />
+    <Content Include="App\main\services\main.public-users.svc.js" />
+    <Content Include="App\ui\app.ui.js" />
+    <Content Include="App\ui\controllers\dummy.js" />
+    <Content Include="App\ui\directives\dummy.js" />
+    <Content Include="App\ui\filters\dummy.js" />
+    <Content Include="App\ui\services\ui.svc.js" />
+    <Content Include="App\views\core\administrators.view.html" />
+    <Content Include="App\views\core\administrators.html" />
+    <Content Include="App\views\core\home.html" />
+    <Content Include="App\views\core\login.html" />
+    <Content Include="App\views\core\modal.alert.html" />
+    <Content Include="App\views\core\administrators.list.html" />
+    <Content Include="App\views\core\administrators.form.html" />
+    <Content Include="App\views\main\countries.html" />
+    <Content Include="App\views\main\map.html" />
+    <Content Include="App\views\main\public-users.membership.html" />
+    <Content Include="App\views\main\membership-plans.form.html" />
+    <Content Include="App\views\main\membership-plans.html" />
+    <Content Include="App\views\main\membership-plans.list.html" />
+    <Content Include="App\views\main\membership-plans.view.html" />
+    <Content Include="App\views\main\public-users.basic.form.html" />
+    <Content Include="App\views\main\public-users.basic.view.html" />
+    <Content Include="App\views\main\public-users.html" />
+    <Content Include="App\views\main\regions.html" />
+    <Content Include="App\views\main\status.html" />
+    <Content Include="App\views\main\public-users.basic.html" />
+    <Content Include="App\views\main\public-users.list.html" />
+    <Content Include="App\views\main\cities.html" />
+    <Content Include="App\views\ui\layout.alerts.html" />
+    <Content Include="App\views\ui\layout.content-header.html" />
+    <Content Include="App\views\ui\layout.footer.html" />
+    <Content Include="App\views\ui\layout.main-header.html" />
+    <Content Include="App\views\ui\layout.side-menu.html" />
+    <Content Include="App\views\ui\modal.confirm.html" />
+    <Content Include="App\views\ui\modal.message.html" />
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js" />
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js" />
+    <Content Include="Client Scripts\MvcFoolproofValidation.js" />
+    <Content Include="Client Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Public\Views\web.config" />
+    <Content Include="gulpfile.js" />
+    <Content Include="upload\ads\1-25-10-1438-06-56-323208.jpg" />
+    <Content Include="upload\categories\2-icon-25-10-1438-04-08-297852.jpg" />
+    <Content Include="upload\categories\2-photo-25-10-1438-04-08-326427.jpg" />
+    <Content Include="upload\categories\3-icon-25-10-1438-06-10-814267.jpg" />
+    <Content Include="upload\categories\3-photo-25-10-1438-06-09-669557.jpg" />
+    <Content Include="upload\categories\X-3-photo-25-10-1438-06-10-812266.jpg" />
+    <Content Include="upload\documents\0-21-10-1438-08-08-957639.jpg" />
+    <Content Include="upload\general\22-10-1438-08-59-638479.jpg" />
+    <Content Include="upload\icons\001-tool-12.png" />
+    <Content Include="upload\icons\002-book.png" />
+    <Content Include="upload\icons\003-tool-11.png" />
+    <Content Include="upload\icons\004-tool-10.png" />
+    <Content Include="upload\icons\005-nature-2.png" />
+    <Content Include="upload\icons\006-clock.png" />
+    <Content Include="upload\icons\007-nature-1.png" />
+    <Content Include="upload\icons\008-tool-9.png" />
+    <Content Include="upload\icons\009-buildings.png" />
+    <Content Include="upload\icons\010-black-1.png" />
+    <Content Include="upload\icons\011-tool-8.png" />
+    <Content Include="upload\icons\012-shape.png" />
+    <Content Include="upload\icons\013-tool-7.png" />
+    <Content Include="upload\icons\014-eating.png" />
+    <Content Include="upload\icons\015-tool-6.png" />
+    <Content Include="upload\icons\016-construction.png" />
+    <Content Include="upload\icons\017-animal.png" />
+    <Content Include="upload\icons\018-nature.png" />
+    <Content Include="upload\icons\019-tool-5.png" />
+    <Content Include="upload\icons\020-tool-4.png" />
+    <Content Include="upload\icons\021-picture.png" />
+    <Content Include="upload\icons\022-rest.png" />
+    <Content Include="upload\icons\023-black.png" />
+    <Content Include="upload\icons\024-garage-wrenches.png" />
+    <Content Include="upload\icons\025-studio-desk-with-table-chair-computer-tower-and-monitor.png" />
+    <Content Include="upload\icons\026-water-closet.png" />
+    <Content Include="upload\icons\027-yard-tree-in-a-pot.png" />
+    <Content Include="upload\icons\028-livingroom-window-with-curtains.png" />
+    <Content Include="upload\icons\029-gardening-shovel-tool-shape.png" />
+    <Content Include="upload\icons\030-bedroom-closet-with-opened-door-of-the-side-to-hang-clothes.png" />
+    <Content Include="upload\icons\031-bathroom-furniture.png" />
+    <Content Include="upload\icons\032-king-size-bedroom.png" />
+    <Content Include="upload\icons\033-pipes-angles.png" />
+    <Content Include="upload\icons\034-water-tap-on-pipes.png" />
+    <Content Include="upload\icons\035-mop-tool-to-clean-floors.png" />
+    <Content Include="upload\icons\036-paintbrush-garage-tool.png" />
+    <Content Include="upload\icons\037-armchair-with-wheels-of-studio-furniture.png" />
+    <Content Include="upload\icons\038-opened-window-door-of-glasses.png" />
+    <Content Include="upload\icons\039-kitchen-furniture.png" />
+    <Content Include="upload\icons\040-cleaning-spray-bottle.png" />
+    <Content Include="upload\icons\041-washing-machine.png" />
+    <Content Include="upload\icons\042-flowers-pot-of-yard.png" />
+    <Content Include="upload\icons\043-bathtub-with-opened-shower.png" />
+    <Content Include="upload\icons\044-bathroom-faucet-tool.png" />
+    <Content Include="upload\icons\045-vacuum.png" />
+    <Content Include="upload\icons\046-equipment.png" />
+    <Content Include="upload\icons\047-gardening.png" />
+    <Content Include="upload\icons\048-tool-3.png" />
+    <Content Include="upload\icons\049-roller.png" />
+    <Content Include="upload\icons\050-brush.png" />
+    <Content Include="upload\icons\051-broom.png" />
+    <Content Include="upload\icons\052-caliper.png" />
+    <Content Include="upload\icons\053-tool-2.png" />
+    <Content Include="upload\icons\054-tool-1.png" />
+    <Content Include="upload\icons\055-tool.png" />
+    <Content Include="upload\icons\056-paint.png" />
+    <Content Include="upload\icons\057-bulb.png" />
+    <Content Include="upload\icons\058-hammer-and-double-sided-wrench-tools.png" />
+    <Content Include="upload\icons\059-drilling.png" />
+    <Content Include="upload\icons\060-tester.png" />
+    <Content Include="upload\icons\061-axe-tool-outline.png" />
+    <Content Include="upload\icons\062-painting-roller.png" />
+    <Content Include="upload\icons\063-wood-cutting-device-outline.png" />
+    <Content Include="upload\icons\064-electrical-cord-plug.png" />
+    <Content Include="upload\icons\065-cabin-house-outline.png" />
+    <Content Include="upload\icons\066-toolbox.png" />
+    <Content Include="upload\icons\067-wrench-and-screwdriver-in-cross.png" />
+    <Content Include="upload\icons\068-paint-roller.png" />
+    <Content Include="upload\icons\069-screwdriver.png" />
+    <Content Include="upload\icons\070-saw.png" />
+    <Content Include="upload\icons\071-wrench-tool-in-a-hand.png" />
+    <Content Include="upload\icons\072-male-painter-with-roller-and-ladder.png" />
+    <Content Include="upload\icons\073-repair-tools-cross.png" />
+    <Content Include="upload\icons\074-hammer-and-nail-on-wood-outline.png" />
+    <Content Include="upload\icons\075-drill-outline.png" />
+    <Content Include="upload\meetings\9-21-10-1438-12-16-831108.jpg" />
+    <Content Include="upload\public-user\4-08-10-1438-06-58-164493.jpg" />
+    <Content Include="upload\public-user\4-08-10-1438-06-59-793088.gif" />
+    <Content Include="upload\public-user\4-08-10-1438-10-04-314145.jpg" />
+    <Content Include="upload\public-user\4-19-09-1438-01-17-615758.jpg" />
+    <Content Include="upload\public-user\4-26-10-1438-11-29-630241.jpg" />
+    <Content Include="upload\public-user\5-17-10-1438-02-46-801353.jpg" />
+    <Content Include="upload\public-user\5-17-10-1438-02-47-572336.jpg" />
+    <Content Include="upload\public-user\5-17-10-1438-05-34-600450.jpg" />
+    <Content Include="upload\public-user\X-4-19-09-1438-01-18-141486.jpg" />
+    <Content Include="upload\requests\4-26-10-1438-04-05-975496.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="wwwroot\lib\overlay.js" />
+    <Content Include="wwwroot\dev\themes\paper\index.html" />
+    <Content Include="wwwroot\dev\themes\paper\paper-rtl.css" />
+    <Content Include="wwwroot\dev\themes\paper\paper-rtl.min.css" />
+    <Content Include="wwwroot\dev\themes\paper\paper-std-rtl.css" />
+    <Content Include="wwwroot\dev\themes\paper\paper-std.css" />
+    <Content Include="wwwroot\dev\themes\paper\paper.css" />
+    <Content Include="wwwroot\dev\themes\paper\paper.min.css" />
+    <Content Include="wwwroot\dev\themes\paper\thumbnail.png" />
+    <Content Include="wwwroot\dev\_admin\admin-rtl-override.css" />
+    <Content Include="wwwroot\dev\_admin\admin-rtl.css" />
+    <Content Include="wwwroot\dev\_admin\admin.css" />
+    <Content Include="wwwroot\dev\_admin\login.css" />
+    <Content Include="wwwroot\dev\_admin\main-rtl-override.css" />
+    <Content Include="wwwroot\dev\_admin\main.css" />
+    <Content Include="wwwroot\dev\_public\css\main-rtl-override.css" />
+    <Content Include="wwwroot\dev\_public\css\main.css" />
+    <Content Include="wwwroot\dev\_public\css\public-ltr.css" />
+    <Content Include="wwwroot\dev\_public\css\public-rtl-override.css" />
+    <Content Include="wwwroot\dev\_public\css\public-rtl.css" />
+    <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\fonts\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="wwwroot\icon.jpg" />
+    <Content Include="wwwroot\icon.png" />
+    <Content Include="wwwroot\layout\index.html" />
+    <Content Include="wwwroot\layout\script.js" />
+    <Content Include="wwwroot\layout\style.css" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\avatar.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\avatar04.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\avatar2.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\avatar3.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\avatar5.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\boxed-bg.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\boxed-bg.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\american-express.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\cirrus.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\mastercard.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\mestro.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\paypal.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\paypal2.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\credit\visa.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\default-50x50.gif" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\icons.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\photo1.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\photo2.png" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\photo3.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\photo4.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user1-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user2-160x160.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user3-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user4-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user5-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user6-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user7-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\admin-lte\img\user8-128x128.jpg" />
+    <Content Include="wwwroot\_admin\images\check-box-empty.png" />
+    <Content Include="wwwroot\_admin\images\content-bg.png" />
+    <Content Include="wwwroot\_admin\images\file.png" />
+    <Content Include="wwwroot\_admin\images\icon.png" />
+    <Content Include="wwwroot\_admin\images\logo.png" />
+    <Content Include=".bowerrc" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout_Template.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="wwwroot\dev\themes\10-admin-lte\extend.less" />
+    <Content Include="wwwroot\dev\themes\admin\build.less" />
+    <Content Include="wwwroot\dev\themes\20-common\build.less" />
+    <Content Include="wwwroot\fonts\droid-kufi\DroidKufi-Bold.eot" />
+    <Content Include="wwwroot\fonts\droid-kufi\DroidKufi-Bold.ttf" />
+    <Content Include="wwwroot\fonts\droid-kufi\DroidKufi-Bold.woff" />
+    <Content Include="wwwroot\fonts\droid-kufi\DroidKufi-Regular.eot" />
+    <Content Include="wwwroot\fonts\droid-kufi\DroidKufi-Regular.ttf" />
+    <Content Include="wwwroot\fonts\droid-kufi\DroidKufi-Regular.woff" />
+    <Content Include="App\core\directives\mh-search.dir.js" />
+    <Content Include="wwwroot\tinymce\license.txt" />
+    <Content Include="wwwroot\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="wwwroot\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="wwwroot\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="wwwroot\tinymce\tinymce.js" />
+    <Content Include="Areas\Public\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Public\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Public\Views\Shared\_Layout.cshtml" />
+    <Content Include="wwwroot\_admin\css\700-admin-ltr.css" />
+    <Content Include="wwwroot\_admin\css\700-admin-rtl.css" />
+    <Content Include="wwwroot\_admin\css\800-ar-rtl.css" />
+    <Content Include="wwwroot\_admin\images\person.jpg" />
+    <Content Include="wwwroot\_admin\images\photo.png" />
+    <Content Include="wwwroot\lib\X-00-repond.js" />
+    <Content Include="wwwroot\lib\fastclick.js" />
+    <Content Include="wwwroot\lib\jquery.js" />
+    <Content Include="wwwroot\lib\X-20-jquery.unobtrusive-ajax.js" />
+    <Content Include="wwwroot\lib\X-30-jquery.validate.js" />
+    <Content Include="wwwroot\lib\X-40-jquery.validate.unobtrusive.js" />
+    <Content Include="wwwroot\lib\jquery.slimscroll.js" />
+    <Content Include="wwwroot\lib\angular.js" />
+    <Content Include="wwwroot\lib\ui-mask.js" />
+    <Content Include="wwwroot\lib\moment-with-locales.js" />
+    <Content Include="wwwroot\lib\angular-sanitize.js" />
+    <Content Include="wwwroot\lib\angular-slimscroll.js" />
+    <Content Include="wwwroot\lib\angular-ui-router.js" />
+    <Content Include="wwwroot\lib\ui-bootstrap-tpls.js" />
+    <Content Include="wwwroot\lib\angular-moment-picker.js" />
+    <Content Include="wwwroot\lib\smart-table.js" />
+    <Content Include="wwwroot\lib\checklist-model.js" />
+    <Content Include="wwwroot\lib\tinymce.angular.js" />
+    <Content Include="wwwroot\lib\ie10-viewport-bug-workaround.js" />
+    <Content Include="wwwroot\lib\ui-select.js" />
+    <Content Include="wwwroot\lib\tinycolor.js" />
+    <Content Include="wwwroot\lib\angularjs-color-picker.js" />
+    <Content Include="wwwroot\lib\admin-lte-support.js" />
+    <Content Include="wwwroot\lib\ng-map.js" />
+    <Content Include="wwwroot\lib\X-450-admin-lte.js" />
+    <Content Include="wwwroot\lib\X-710-snap.js" />
+    <Content Include="Areas\Front\Views\web.config" />
+    <Content Include="Areas\Front\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Front\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Front\Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <Content Include="wwwroot\dev\themes\50-ui-select\build.less" />
+    <Content Include="upload\public-user\4-19-09-1438-01-13-297006.pdf" />
+    <Content Include="upload\public-user\4-19-09-1438-01-15-070472.pdf" />
+    <Content Include="upload\public-user\4-19-09-1438-01-29-844574.pdf" />
+    <Content Include="upload\public-user\5-17-10-1438-06-09-876464.pdf" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="wwwroot\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="wwwroot\_front\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\_front\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\_front\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\_front\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\_front\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\_front\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\_front\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Templates\registration.cshtml" />
+    <Content Include="Templates\Web.config" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <None Include="wwwroot\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Front\Models\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\dev\scss\" />
+    <Folder Include="wwwroot\dev\themes\default\" />
+    <Folder Include="wwwroot\_admin\js\" />
+    <Folder Include="wwwroot\_public\js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="wwwroot\dev\config.json" />
+    <Content Include="wwwroot\dev\resources\pure-css-checkbox-master.zip" />
+    <Content Include="wwwroot\dev\themes\10-admin-lte\admin-lte-variables.less" />
+    <Content Include="wwwroot\dev\themes\10-admin-lte\build.less" />
+    <Content Include="wwwroot\dev\themes\00-bootstrap\build.less" />
+    <Content Include="wwwroot\dev\themes\30-font-awesome\build.less" />
+    <Content Include="wwwroot\dev\themes\paper\bootswatch.less" />
+    <Content Include="wwwroot\dev\themes\paper\build.less" />
+    <Content Include="wwwroot\dev\themes\paper\build.scss" />
+    <Content Include="wwwroot\dev\themes\paper\variables.less" />
+    <Content Include="wwwroot\dev\themes\paper\_bootswatch.scss" />
+    <Content Include="wwwroot\dev\themes\paper\_variables.scss" />
+    <Content Include="wwwroot\fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\fonts\font-awesome\fontawesome-webfont.woff2" />
+    <Content Include="wwwroot\fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="wwwroot\fonts\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="wwwroot\fonts\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="wwwroot\fonts\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="wwwroot\fonts\glyphicons\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Admin\Errors.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Admin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Admin\Shared.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Shared.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Admin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Admin\Models.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Admin</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Front.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Front.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Admin\Views.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Views.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Admin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Admin\Roles.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Roles.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Admin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Admin\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Admin</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Errors.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Public\Errors.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Public\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Public\Models.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Public\Roles.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Roles.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Public\Shared.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Shared.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Public\Views.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Views.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources.Public</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Mail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Views.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Models.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Shared.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Shared.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Foundation.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{f08e7992-d80e-4528-b46e-0242b51374e6}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{898a5ac5-9c97-404f-b251-f56b5cf69f49}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55504</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44381/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.3.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.3.10.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

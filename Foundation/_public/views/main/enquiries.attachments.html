@@ -1,0 +1,94 @@
+﻿<div ng-controller="main.enquiries.attachmnets.ctrl as vm" style="background-color:#fff;padding:10px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{resources.shared.add_edit}}</div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="form" novalidate>
+                <div class="form-group">
+                    <div ng-if="vm.viewMode !='edit'">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-11">
+                            <input type="file" name="file" file-bind="vm.model" required 
+                                   accept=".jpg,.jpeg,.png,.gif,.bmp,.doc,.docx,.xls,.xlsx,.pdf" max-size="5120"/>
+                            <div class="text-danger">
+                                <b>max size 1024KB</b> <span>.jpg,.jpeg,.png,.gif,.bmp,.doc,.docx,.xls,.xlsx,.pdf,.zip,.txt</span>
+                                
+                                <span ng-if="form.file.$touched && form.file.$dirty && form.file.$invalid">
+                                    {{resources.errors.common_required}}
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix margin"></div>
+
+                    <label class="control-label col-md-1" for="title">{{resources.models.common_title}} *</label>
+                    <div class="col-md-6 has-feedback" ng-class="form.title.$dirty && form.title.$touched && form.title.$invalid ?'has-error':''">
+                        <input type="text" class="form-control" name="title" ng-model="vm.model.title"
+                               required="required" ng-pattern="validation.common.title" />
+                        <span class="fa fa-remove form-control-feedback" ng-if="form.title.$dirty && form.title.$touched && form.title.$invalid"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid || (vm.viewMode !='edit' && !vm.model.content)">
+                            {{resources.shared.save}}
+                            <i class="fa fa-check" style="color:#fff"></i>
+                        </button>
+                        <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                            {{resources.shared.cancel}}
+                            <i class="fa fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-1"></div>
+                <div class="text-danger">
+                    <span ng-if="form.title.$touched && form.title.$dirty && form.title.$invalid">
+                        {{resources.errors.common_required + ' '+ resources.errors.common_title}}
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table st-table="displayedList" st-safe-src="vm.list" class="table table-bordred table-striped  ">
+            <thead>
+                <tr>
+                    <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                    <th>{{resources.models.common_title}}</th>
+                    <th style="width:70px;"></th>
+                    <th style="width:120px">{{resources.models.common_creation_date}}</th>
+                    <th style="width:150px">{{resources.common_functions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in displayedList track by item.id" data-overlay-wrapper>
+                    <td class="hidden">{{item.id}}</td>
+                    <td>
+                        <a href="{{item.url}}" target="_blank">{{item.title}}</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{item.url}}" target="_blank">
+                            <img ng-src="{{getFileIcon(item)}}" style="width:64px;max-height:64px;border:0;border-radius:5px;" />
+                        </a>
+                    </td>
+                    <td>{{item.creationDate | date:'dd/MM/yyyy'}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" ng-click="vm.edit(item)">
+                            <span class="fa fa-pencil fa-lg"></span>
+                        </button>
+                        <button class="btn btn-danger btn-xs" ng-click="ui.confirmDelete(vm.remove,item)">
+                            <span class="fa fa-trash fa-lg"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

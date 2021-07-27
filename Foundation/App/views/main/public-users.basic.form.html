@@ -1,0 +1,128 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="margin"></div>
+            <div class="text-center">
+                <div class="shadow person-img"
+                     style="background-image: url('{{vm.model.photoUrl?vm.model.photoUrl:ui.settings.images.person}}');">
+                    <button  title="{{resources.shared.delete}}" ng-show="vm.model.photo" class="btn btn-danger shadow" style="float:right" 
+                            ng-click="vm.removePhoto()">
+                        <span class="fa fa-trash fa-lg"></span>
+                    </button>
+                    <button title="{{resources.shared.cancel}}" class="btn btn-default shadow" style="float:right"
+                            ng-click="vm.resetPhoto()">
+                        <span class="fa fa-refresh fa-lg"></span>
+                    </button>
+                </div>
+                <div class="margin">
+                    <input type="file" name="file" file-bind="photoFile"/>
+                </div>
+            </div>
+            <div class="margin"></div>
+            <div class="form-group text-center">
+                <label class="control-label" for="name">{{resources.models.public_user_otp}}</label>
+                <div style="font-size:20px">
+                    {{vm.model.otp}}
+                </div>
+                <button  title="{{resources.models.public_user_update_otp}}" class="btn btn-default shadow"
+                        ng-click="vm.updateActivationCode()">
+                    <span class="fa fa-refresh fa-lg"></span>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="email">{{resources.models.common_username}}</label>
+                    <div class="col-sm-8">
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-at"></span></span>
+                            <input type="email" class="form-control" name="username" ng-model="vm.model.username"
+                                   required ng-pattern="resources.validation.common.email" />
+                        </div>
+                        <div class="text-danger">
+                            <span ng-if="form.email.$touched && form.email.$invalid">
+                                {{resources.errors.common_required + ' ' + resources.errors.common_email}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="name">{{resources.models.public_user_name}} *</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-address-card"></span></span>
+                            <input type="text" class="form-control" name="name" ng-model="vm.model.name"
+                                   required ng-pattern="resources.validation.common.fullName"/>
+                        </div>
+                        <div class="text-danger">
+                            <span ng-if="form.name.$touched && form.name.$invalid">
+                                {{resources.errors.common_required + ' '+resources.errors.common_full_name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="phoneNumber">{{resources.models.common_phone}}</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                            <input type="tel" class="form-control" name="phoneNumber" ng-model="vm.model.phoneNumber"
+                                   ng-pattern="resources.validation.common.phone"/>
+                        </div>
+                        <div class="text-danger">
+                            <span ng-if="form.phoneNumber.$touched && form.phoneNumber.$invalid">
+                                {{resources.errors.common_phone}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="isActive">{{resources.models.common_is_active}}</label>
+
+                    <div class="col-sm-8">
+                        <input type="checkbox" name="isActive" ng-model="vm.model.isActive" />
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="notes">{{resources.models.common_remarks}}</label>
+                    <div class="col-sm-10">
+                        <textarea type="text" class="form-control" name="notes" ng-model="vm.model.remarks" rows="5"
+                                  ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                        <div class="text-danger">
+                            <span ng-if="form.notes.$touched && form.notes.$invalid">
+                                {{resources.errors.common_notes}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="text-align:center">
+                <div class="btn-group margin" role="group">
+                    <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                        {{resources.shared.save}}
+                        <i class="fa fa-check" style="color:#fff"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                        {{resources.shared.cancel}}
+                        <i class="fa fa-ban"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

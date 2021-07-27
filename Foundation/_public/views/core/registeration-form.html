@@ -1,0 +1,91 @@
+﻿<form name="registrationForm" novalidate style="margin-top:5px;padding:5px;">
+    <div class="form-group">
+        <label class="control-label" for="email">{{resources.models.common_username}} *</label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-at"></span></span>
+            <input type="email" placeholder="Email" class="form-control" name="username" ng-model="vm.model.username"
+                   required ng-pattern="resources.validation.common.email" />
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-primary" ng-click="vm.requestOtp('register')" ng-disabled="registrationForm.username.$invalid">
+                    <span class="special-font">{{resources.views.register_request_otp}}</span>
+                </button>
+            </div>
+        </div>
+        <div class="text-danger">
+            <span ng-if="registrationForm.username.$touched && registrationForm.username.$invalid">
+                {{resources.errors.common_required + ' ' + resources.errors.common_email}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name">{{resources.views.register_activation_code}} *</label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-hashtag"></span></span>
+            <input type="text" class="form-control" name="activationCode" ng-model="vm.model.activationCode" required="required" />
+
+            
+        </div>
+        <div class="text-danger" ng-if="registrationForm.activationCode.$touched && registrationForm.activationCode.$invalid">*</div>
+
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="name">{{resources.models.public_user_name}} *</label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-address-card"></span></span>
+            <input type="text" class="form-control" name="name" ng-model="vm.model.name"
+                   required ng-pattern="resources.validation.common.fullName" />
+        </div>
+        <div class="text-danger">
+            <span ng-if="registrationForm.name.$touched && registrationForm.name.$invalid">
+                {{resources.errors.common_required + ' '+resources.errors.common_full_name}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="phoneNumber">{{resources.models.common_phone}}</label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+            <input type="tel" class="form-control" name="phoneNumber" ng-model="vm.model.phoneNumber"
+                   ng-pattern="resources.validation.common.phone" />
+        </div>
+        <div class="text-danger">
+            <span ng-if="registrationForm.phoneNumber.$touched && registrationForm.phoneNumber.$invalid">
+                {{resources.errors.common_phone}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="password">{{resources.models.common_password}} *</label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-key"></span></span>
+            <input type="password" class="form-control" name="password" ng-model="vm.model.password"
+                   required ng-pattern="resources.validation.common.password" />
+        </div>
+        <div class="text-danger">
+            <span ng-if="registrationForm.password.$touched && registrationForm.password.$invalid">
+                {{resources.errors.common_required + ', '+ resources.errors.common_password}}
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="confirm_password">{{resources.models.common_confirm_password}} *</label>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="fa fa-check"></span></span>
+            <input type="password" class="form-control" name="confirmPassword" ng-model="vm.model.confirmPassword"
+                   ng-pattern="vm.model.password" />
+        </div>
+        <div class="text-danger">
+            <span ng-if="registrationForm.confirmPassword.$touched && registrationForm.confirmPassword.$invalid">
+                {{resources.errors.common_confirm_password}}
+            </span>
+        </div>
+    </div>
+    <div style="width:100%;text-align:right">
+        <button type="button" class="btn btn-primary" ng-click="vm.register()" ng-disabled="registrationForm.$invalid">
+            {{resources.shared.register}}
+            <i class="fa fa-check" style="color:#fff"></i>
+        </button>
+
+    </div>
+</form>
+

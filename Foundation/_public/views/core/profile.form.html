@@ -1,0 +1,115 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="margin"></div>
+            <div class="text-center">
+                <div class="shadow person-img" ng-style="photoStyle">
+                    <button title="{{resources.shared.delete}}" ng-show="vm.model.photo" class="btn btn-danger shadow" style="float:right"
+                            ng-click="vm.removePhoto()">
+                        <span class="fa fa-trash fa-lg"></span>
+                    </button>
+                    <button title="{{resources.shared.cancel}}" class="btn btn-default shadow" style="float:right"
+                            ng-click="vm.resetPhoto()">
+                        <span class="fa fa-refresh fa-lg"></span>
+                    </button>
+                </div>
+                <div class="margin">
+                    <input type="file" accept=".png,.jpeg,.jpg" name="file" file-bind="photoFile" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-6">
+                <div class="data-row">
+                    <div class="col-sm-4 data-label">{{resources.models.common_username}}</div>
+                    <div class="col-sm-8 data-text">
+                        {{vm.model.userName}}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="name">{{resources.models.public_user_name}} *</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-address-card"></span></span>
+                            <input type="text" class="form-control" name="name" ng-model="vm.model.name"
+                                   required ng-pattern="resources.validation.common.fullName" />
+                        </div>
+                        <div class="text-danger">
+                            <span ng-if="form.name.$touched && form.name.$invalid">
+                                {{resources.errors.common_required + ' '+resources.errors.common_full_name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="phoneNumber">{{resources.models.common_phone}}</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                            <input type="tel" class="form-control" name="phoneNumber" ng-model="vm.model.phoneNumber"
+                                   ng-pattern="resources.validation.common.phone" />
+                        </div>
+                        <div class="text-danger">
+                            <span ng-if="form.phoneNumber.$touched && form.phoneNumber.$invalid">
+                                {{resources.errors.common_phone}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="companyName">{{resources.models.public_user_company_name}}</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-building"></span></span>
+                            <input type="text" class="form-control" name="companyName" ng-model="vm.model.companyName"
+                                   ng-pattern="resources.validation.common.fullName" />
+                        </div>
+                        <div class="text-danger">
+                            <span ng-if="form.companyName.$touched && form.companyName.$invalid">
+                                {{resources.errors.common_full_name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="profile">{{resources.models.public_user_profile}}</label>
+                    <div class="col-sm-10">
+                        <textarea  ui-tinymce="ui.tinymceOptions.min"  class="form-control" name="profile" ng-model="vm.model.profile" rows="5"
+                                  ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                        <div class="text-danger">
+                            <span ng-if="form.profile.$touched && form.notes.$invalid">
+                                {{resources.errors.common_notes}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="text-align:center">
+                <div class="btn-group margin" role="group">
+                    <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                        {{resources.shared.save}}
+                        <i class="fa fa-check" style="color:#fff"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                        {{resources.shared.cancel}}
+                        <i class="fa fa-ban"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

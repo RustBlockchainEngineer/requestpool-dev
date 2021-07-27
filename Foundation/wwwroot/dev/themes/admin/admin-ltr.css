@@ -1,0 +1,101 @@
+/*.skin-green-light .main-header .logo{
+    background-color:#46c1c9;
+}
+.skin-green-light .main-header .navbar{
+    background-color:#067e86;
+}
+*/
+.navbar-custom-menu li {
+  text-align: center;
+  color: #fff;
+}
+.main-content {
+  padding: 15px;
+}
+.main-footer {
+  height: 30px;
+  padding: 5px;
+}
+.content-header {
+  background: #fff!important;
+  padding: 10px;
+  padding-left: 15px;
+  border-bottom: solid #23c1cc 3px;
+  width: 100%;
+}
+.alert {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 0;
+  margin: 0;
+  margin-top: 3px;
+}
+.toolbar {
+  background: #191515;
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+  margin: 0;
+}
+.toolbar .navbar-nav > li > a {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.toolbar.navbar {
+  min-height: 30px !important;
+  height: 30px;
+}
+.overlay {
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.overlay .fa {
+  position: absolute;
+  z-index: 10005;
+  top: 50%;
+  left: 50%;
+  margin-left: -15px;
+  margin-top: -15px;
+  color: #000;
+  font-size: 30px;
+}
+.custom-overlay-wrapper .overlay .fa-spin {
+  -webkit-animation: fa-spin 0.7s infinite linear;
+          animation: fa-spin 0.7s infinite linear;
+}
+.login-view {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #23c1cc;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+}
+.table {
+  background: #fff;
+}
+.person-img {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.form-view-text {
+  padding-top: 7px;
+}
+.table * td {
+  vertical-align: middle!important;
+}
+.date-cell {
+  width: 140px;
+}

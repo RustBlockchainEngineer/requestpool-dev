@@ -1,0 +1,164 @@
+﻿<form name="form" novalidate  style="background-color:#fff">
+    <div style="width:100%;text-align:center">
+        <div class="btn-group margin" role="group">
+            <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                {{resources.shared.save}}
+                <i class="fa fa-check" style="color:#fff"></i>
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                {{resources.shared.cancel}}
+                <i class="fa fa-ban"></i>
+            </button>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{resources.shared.basic_info}}</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">{{resources.models.administrator_username}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-user-circle"></span></span>
+                                <input type="text" class="form-control" name="username" ng-model="vm.model.username"
+                                       required ng-pattern="resources.validation.common.adminUsername" />
+                            </div>
+                            <div class="text-danger">
+                                <span ng-if="form.username.$touched && form.username.$invalid">
+                                    {{resources.errors.common_required + ' , '+ resources.errors.administrator_username}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="vm.model.id">
+                        <div class="col-md-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="isUpdatePassword" ng-model="vm.model.isUpdatePassword" />
+                                    <label for="code">{{resources.models.administrator_update_password}}</label>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="!vm.model.id || vm.model.isUpdatePassword">
+                        <div ng-class="vm.model.id?'col-md-3':'col-md-4'">
+                            <div class="form-group">
+                                <label for="name">{{resources.models.administrator_password}}</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-key"></span></span>
+                                    <input type="password" class="form-control" name="password" ng-model="$parent.vm.model.password"
+                                           required ng-pattern="resources.validation.common.adminPassword" />
+                                </div>
+                                <div class="text-danger">
+                                    <span ng-if="form.password.$touched  && form.password.$invalid">
+                                        {{resources.errors.common_required + ' , '+ resources.errors.administrator_password}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-class="vm.model.id?'col-md-3':'col-md-4'">
+                            <div class="form-group">
+                                <label for="name">{{resources.models.administrator_confirm_password}}</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-key"></span></span>
+                                    <input type="password" class="form-control" name="confirmPassword"
+                                           ng-model="$parent.vm.model.confirmPassword"
+                                           ng-pattern="vm.model.password" />
+                                </div>
+                                <div class="text-danger">
+                                    <span ng-if="form.confirmPassword.$touched && form.confirmPassword.$invalid">
+                                        {{resources.errors.common_required + ' , '+ resources.errors.common_confirm_password}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">{{resources.models.administrator_name}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-address-card"></span></span>
+                                <input type="text" class="form-control" name="name" ng-model="vm.model.name"
+                                       required ng-pattern="resources.validation.common.fullName" />
+                            </div>
+                            <div class="text-danger">
+                                <span ng-if="form.name.$touched && form.name.$invalid">
+                                    {{resources.errors.common_required + ' , '+ resources.errors.common_full_name}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="email">{{resources.models.administrator_email}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-at"></span></span>
+                                <input type="email" class="form-control" name="email" ng-model="vm.model.email"
+                                       ng-pattern="resources.validation.common.email" />
+                            </div>
+                            <div class="text-danger">
+                                <span ng-if="form.email.$touched && form.email.$invalid">
+                                    {{resources.errors.common_required + ' , '+ resources.errors.common_email}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber">{{resources.models.administrator_phone_number}}</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="fa fa-phone"></span></span>
+                                <input type="tel" class="form-control" name="phoneNumber" ng-model="vm.model.phoneNumber"
+                                       ng-pattern="resources.validation.common.phone" />
+                            </div>
+                            <div class="text-danger">
+                                <span ng-if="form.phoneNumber.$touched && form.phoneNumber.$invalid">
+                                    {{resources.errors.common_required + ' , '+ resources.errors.common_phone}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="checkbox" name="isActive" ng-model="vm.model.isActive" />
+                            <label for="isActive">{{resources.models.common_is_active}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{resources.models.role}}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3" ng-repeat="role in vm.roles track by role.id">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" checklist-model="vm.model.roles" checklist-value="role.name" />
+                            {{resources.roles[role.name]}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:100%;text-align:center">
+        <div class="btn-group margin" role="group">
+            <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                {{resources.shared.save}}
+                <i class="fa fa-check" style="color:#fff"></i>
+            </button>
+            <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                {{resources.shared.cancel}}
+                <i class="fa fa-ban"></i>
+            </button>
+        </div>
+    </div>
+</form>
+

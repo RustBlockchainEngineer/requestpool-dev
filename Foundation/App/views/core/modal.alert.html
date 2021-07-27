@@ -1,0 +1,10 @@
+﻿
+<div class="modal-header">
+    <h4 class="modal-title">{{modalOptions.title?modalOptions.title: 'Info'}}</h4>
+</div>
+<div class="modal-body">
+   {{modalOptions.message}}
+</div>
+<div class="modal-footer">
+    <button class="btn btn-{{modalOptions.mode?modalOptions.mode:'primary'}}" ng-click="close()">{{modalOptions.okText?modalOptions.okText:'OK'}}</button>
+</div>

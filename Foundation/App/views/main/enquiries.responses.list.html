@@ -1,0 +1,75 @@
+﻿<div style="background-color:#fff;padding:10px;">
+    <div class="btn-group margin" role="group" aria-label="...">
+        <button type="button" class="btn btn-primary" ng-click="vm.compare()" 
+                ng-disabled="vm.recipientResponsesToCompare.length == 0">
+            {{resources.models.recipient_response_compare}}
+            <i class="fa fa-balance-scale" style="color:#fff"></i>
+            {{vm.recipientResponsesToCompare.length}}
+        </button>
+    </div>
+    <div class="table-responsive shadow">
+        <table st-table="vm.displayedList" st-safe-src="vm.recipientsResponses" class="table table-bordred table-striped ">
+            <thead>
+                <tr>
+                    <th colspan="7">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" ng-click="toggleSearch()">
+                                {{resources.shared.search}}
+                                <span class="pull-right clickable"><i class="glyphicon " ng-class="showSearch?'glyphicon-chevron-up':'glyphicon-chevron-down'"></i></span>
+                            </div>
+                            <div class="panel-body" ng-show="vm.showSearch">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input mh-search="subject" type="search" ng-model="vm.search.subject" class="form-control"
+                                                       placeholder="{{resources.models.common_subject}}" />
+                                                <span class="input-group-addon" ng-click="vm.search.subject=''">
+                                                    <i class="fa fa-undo fa-lg"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                    <th><input type="checkbox" ng-model="vm.allSelected" ng-change="vm.selectAll()" /></th>
+                    <th>{{resources.models.response_sender}}</th>
+                    <th>{{resources.models.common_email}}</th>
+                    <th>{{resources.models.common_phone}}</th>
+                    <th class="date-cell">{{resources.models.response_submit_date}}</th>
+                    <th style="width:50px">{{resources.models.common_functions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.displayedList track by item.id" data-overlay-wrapper>
+                    <td class="hidden">{{item.id}}</td>
+                    <td><input type="checkbox" ng-model="item.checked" ng-click="vm.updateCompareList(item)"/> </td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phone}}</td>
+                    <td>{{item.responseSubmitDate | date:'dd/MM/yyyy hh:mm a':'UTC'}}</td>
+                    <td>
+                        <button ng-show="!item.isDraftResponse" title="{{resources.shared.info}}" class="btn btn-default btn-xs" ng-click="vm.view(item)">
+                            <span class="fa fa-info-circle fa-lg"></span>
+                        </button>
+                        <button ng-show="item.isDraftResponse" title="{{resources.shared.draft}}" class="btn btn-default btn-xs">
+                            <span class="fa fa-hourglass-half fa-lg"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,206 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-12" style="text-align:center">
+            Note: You cannot change enquiry items after sending the invitation.
+            <div class="btn-group margin" role="group">
+                <button ng-show="vm.model.isDraft" type="button" class="btn btn-primary" ng-click="vm.save(true)" ng-disabled="form.$invalid">
+                    {{resources.shared.save_draft}}
+                    <i class="fa fa-check" style="color:#fff"></i>
+                </button>
+                <button  type="button" class="btn btn-primary" ng-click="vm.save(false)" ng-disabled="form.$invalid">
+                    <span ng-show="vm.model.isDraft">
+                        {{resources.shared.send}}
+                        <i class="fa fa-send" style="color:#fff"></i>
+                    </span>
+                    <span ng-show="!vm.model.isDraft">
+                        {{resources.shared.save}}
+                        <i class="fa fa-save" style="color:#fff"></i>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.common_subject}}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="subject" ng-model="vm.model.subject"
+                           required ng-pattern="resources.validation.common.title" ng-disabled="!vm.model.isDraft" />
+                    <div class="text-danger">
+                        <span ng-if="form.subject.$touched && form.subject.$invalid">
+                            {{resources.errors.common_required + ' ' + resources.errors.common_title}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.invitation_end_date}}</label>
+                <div class="col-sm-10">
+                    <div class="padding" moment-picker="vm.model.formattedEndDate" format="DD-MM-YYYY"
+                         min-date="vm.now" ng-model="vm.model.endDate">
+                        <span class="fa fa-calendar fa-2x"></span>
+                        <span class="padding">{{vm.model.formattedEndDate}}</span>
+                    </div>
+                    <input class="hidden" type="text" name="endDate" ng-model="vm.model.endDate"/>
+                    <div class="text-danger">
+                        <span ng-if="form.endDate.$touched && form.endDate.$invalid">
+                            {{resources.errors.common_required}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-12 hidden">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+                <div class="col-sm-10">
+                    <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="description" ng-model="vm.model.description" rows="3"
+                              ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                    <div class="text-danger">
+                        <span ng-if="form.description.$touched && form.description.$invalid">
+                            {{resources.errors.common_notes}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="vm.model.isDraft">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    {{resources.shared.search}}
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table st-table="vm.displayedContacts" st-safe-src="vm.contacts" class="table table-bordred table-striped ">
+                            <thead>
+                                <tr>
+                                    <th colspan="6">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <input mh-search="name" type="search" ng-model="vm.search.name" class="form-control"
+                                                               placeholder="{{resources.models.common_name}}" />
+                                                        <span class="input-group-addon" ng-click="vm.search.name=''">
+                                                            <i class="fa fa-undo fa-lg"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <input mh-search="phone" type="search" ng-model="vm.search.phone" class="form-control"
+                                                               placeholder="{{resources.models.common_phone}}" />
+                                                        <span class="input-group-addon" ng-click="vm.search.phone=''">
+                                                            <i class="fa fa-undo fa-lg"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <input mh-search="email" type="search" ng-model="vm.search.email" class="form-control"
+                                                               placeholder="{{resources.models.common_email}}" />
+                                                        <span class="input-group-addon" ng-click="vm.search.email=''">
+                                                            <i class="fa fa-undo fa-lg"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select mh-search="contactType.id" class="form-control" ng-model="vm.search.contactTypeId"
+                                                            ng-options="item.id as item.name for item in vm.contactTypes | filter:{isDeleted:false}">
+                                                        <option value="">----</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                                    <th class="hidden"></th>
+                                    <th>{{resources.models.common_name}}</th>
+                                    <th>{{resources.models.common_phone}}</th>
+                                    <th>{{resources.models.common_email}}</th>
+                                    <th style="width:50px"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.displayedContacts track by item.id" data-overlay-wrapper>
+                                    <td class="hidden">{{item.id}}</td>
+                                    <td class="hidden">{{item.isDeleted}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.phone}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>
+                                        <button ng-show="vm.showAddContact(item)" class="btn btn-primary btn-xs" ng-click="vm.addContact(item)">
+                                            <span class="fa fa-plus fa-lg"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    {{resources.models.recipients}}
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordred table-striped ">
+                            <thead>
+                                <tr>
+                                    <th class="hidden"></th>
+                                    <th>{{resources.models.common_name}}</th>
+                                    <th>{{resources.models.common_phone}}</th>
+                                    <th>{{resources.models.common_email}}</th>
+                                    <th style="width:50px"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in vm.model.recipients track by item.contactId" data-overlay-wrapper>
+                                    <td class="hidden">{{item.id}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.phone}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>
+                                        <button class="btn btn-danger btn-xs" ng-click="vm.removeContact(item)">
+                                            <span class="fa fa-minus fa-lg"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+
+</form>
+

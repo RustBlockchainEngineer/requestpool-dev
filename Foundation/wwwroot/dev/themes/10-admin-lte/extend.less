@@ -1,0 +1,39 @@
+﻿@main-header-height: 100px;
+@main-header-brand-color: #fff;
+@navbar-toggle-color: #fff;
+
+.main-header {
+    max-height: @main-header-height;
+    .logo {
+        line-height: @main-header-height;
+        height: @main-header-height;
+    }
+    .navbar-brand {
+        color: @main-header-brand-color;
+    }
+    .navbar {
+        height: @main-header-height;
+    }
+}
+
+.navbar-toggle {
+    color: #fff;
+}
+
+.main-sidebar,
+.left-side {
+  padding-top: @main-header-height;
+  @media (max-width: @screen-header-collapse) {
+    padding-top: @main-header-height*2;
+  }
+
+}
+.fixed {
+    .content-wrapper, .right-side {
+        padding-top: @main-header-height;
+
+        @media (max-width: @screen-header-collapse) {
+            padding-top: @main-header-height * 2;
+        }
+    }
+}

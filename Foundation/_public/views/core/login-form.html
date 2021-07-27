@@ -1,0 +1,30 @@
+﻿
+<form name="loginForm" novalidate style="margin-top:5px;padding:5px;">
+    <div class="form-group">
+        <label for="name">{{resources.shared.username}}*</label>
+        <input type="text" class="form-control" name="username" ng-model="vm.model.username" required="required" />
+        <div class="text-danger" ng-if="loginForm.username.$touched && loginForm.username.$invalid">*</div>
+    </div>
+    <div class="form-group">
+        <label for="name">{{resources.shared.password}}*</label>
+        <div class="input-group">
+            <input type="password" class="form-control" name="password" ng-model="vm.model.password" required="required" />
+
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-primary" ng-click="vm.login()" ng-disabled="loginForm.$invalid">
+                    <i class="fa fa-sign-in" style="color:#fff"></i>
+                    <span class="special-font">{{resources.shared.login}}</span>
+                </button>
+            </div>
+        </div>
+        <div class="text-danger" ng-if="loginForm.password.$touched && loginForm.password.$invalid">*</div>
+
+    </div>
+    <div style="width:100%;text-align:right">
+        Forgot password?
+        <button type="submit" class="btn btn-warning" ng-click="vm.requestOtp('login')" ng-disabled="loginForm.username.$invalid">
+            <i class="fa fa-sign-in" style="color:#fff"></i>
+            <span class="special-font">{{resources.views.login_request_otp}}</span>
+        </button>
+    </div>
+</form>

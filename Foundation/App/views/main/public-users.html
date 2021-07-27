@@ -1,0 +1,31 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+        <uib-tabset  class="shadow">
+            <uib-tab index="0">
+                <uib-tab-heading>
+                    <i class="fa fa-user fa-2x"></i> {{resources.shared.basic_info}}
+                </uib-tab-heading>
+                <ng-include src="'/app/views/main/public-users.basic.html'"></ng-include>
+            </uib-tab>
+            
+            <uib-tab index="1" disable="vm.isNewEntry" >
+                <uib-tab-heading>
+                    <i class="fa fa-tasks fa-2x"></i> {{resources.menu.membership}}
+                </uib-tab-heading>
+                <ng-include src="'/app/views/main/public-users.membership.html'"></ng-include>
+            </uib-tab>  
+
+            <uib-tab index="2" disable="vm.isNewEntry">
+                <uib-tab-heading>
+                    <i class="fa fa-battery fa-2x"></i> {{resources.menu.consumption}}
+                </uib-tab-heading>
+                <ng-include src="'/app/views/main/public-users.membership.current.html'"></ng-include>
+            </uib-tab> 
+            
+        </uib-tabset>
+
+    </div>
+</div>

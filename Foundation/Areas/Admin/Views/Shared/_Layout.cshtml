@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>Request Pool - Admin Panel</title>
+    @Styles.Render("~/wwwroot/admin/css/lib/" + Foundation.Resources.Shared.language_direction)
+
+    @Styles.Render("~/wwwroot/admin/css/" + Foundation.Resources.Shared.language_direction)
+    
+</head>
+<!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
+<!-- the fixed layout is not compatible with sidebar-mini -->
+<body class="hold-transition skin-custom fixed sidebar-mini custom-overlay-wrapper" adminlte-layout>
+    <div class='overlay'><i class='fa fa-refresh fa-spin'></i></div>
+    <!-- Site wrapper -->
+    <div class="wrapper" adminlte-wrapper>
+        <header id="main-header" class="main-header" adminlte-header loggedin>
+            <ng-include src="ui.settings.mainHeader"></ng-include>
+        </header>
+        <!-- =============================================== -->
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar shadow+" adminlte-sidebar loggedin>
+            <ng-include src="ui.settings.sideMenu"></ng-include>
+        </aside>
+        <!-- =============================================== -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" adminlte-content>
+            <ng-include src="ui.settings.contentHeader" loggedin></ng-include>
+            <!-- Main content -->
+            <section class="content" style="padding:0;position:relative">
+                <ui-view>
+                    @RenderBody()
+                </ui-view>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer id="main-footer" class="main-footer" adminlte-footer loggedin>
+            <ng-include src="ui.settings.footer"></ng-include>
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark" adminlte-control-sidebar></aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    @Scripts.Render("~/wwwroot/wysiwyg/")
+    @Scripts.Render("~/wwwroot/excel/")
+
+
+    @Scripts.Render("~/scripts/admin/lib/")
+    @Scripts.Render("~/scripts/admin/app/")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

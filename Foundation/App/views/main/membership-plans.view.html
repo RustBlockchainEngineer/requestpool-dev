@@ -1,0 +1,119 @@
+﻿<div style="width:100%;text-align:center">
+    <div class="btn-group margin" role="group">
+        <button type="button" class="btn btn-primary" ng-click="vm.isFormMode = true">
+            {{resources.shared.edit}}
+            <i class="fa fa-pencil" style="color:#fff"></i>
+        </button>
+    </div>
+</div>
+
+<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">{{resources.models.common_title}} *</label>
+            <div class="col-sm-10">
+                {{vm.model.title}}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+            <div class="col-sm-10" ng-bind-html="vm.model.description">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label">{{resources.models.membership_plan_max_enquiries_per_month}}</label>
+                <div class="col-sm-6">
+                    {{vm.model.maxEnquiriesPerMonth}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label">{{resources.models.membership_plan_max_items_per_enquiry}}</label>
+                <div class="col-sm-6">
+                    {{vm.model.maxItemsPerEnquiry}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label">{{resources.models.membership_plan_max_invitations_per_month}}</label>
+                <div class="col-sm-6">
+                    {{vm.model.maxInvitationsPerMonth}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_contacts_per_invitation}}</label>
+                <div class="col-sm-6">
+                   {{vm.model.maxContactsPerInvitation}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_item_fields}}</label>
+                <div class="col-sm-6">
+                    {{vm.model.maxItemFields}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_cost_per_month}}</label>
+                <div class="col-sm-6">
+                    {{vm.model.costPerMonth}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_cost_per_year}}</label>
+                <div class="col-sm-6">
+                    {{vm.model.costPerYear}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="isActive">{{resources.models.common_is_active}}</label>
+
+            <div class="col-sm-10">
+                <input type="checkbox" name="isActive" ng-model="vm.model.isActive" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="isPublic">{{resources.models.common_is_public}}</label>
+
+            <div class="col-sm-10">
+                <input type="checkbox" name="isPublic" ng-model="vm.model.isPublic" disabled/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="isDefault">{{resources.models.common_is_default}}</label>
+
+            <div class="col-sm-10">
+                <input type="checkbox" name="isDefault" ng-model="vm.model.isDefault" disabled/>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">{{resources.models.common_remarks}}</label>
+            <div class="col-sm-10">
+                {{vm.model.remarks}}
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+

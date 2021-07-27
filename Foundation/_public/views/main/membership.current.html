@@ -1,0 +1,88 @@
+﻿<div style="background-color:#fff;padding:10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_plan_title}}</div>
+                <div class="col-sm-10 data-text">
+                    {{vm.current.membershipPlan.title}}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_plan_description}}</div>
+                <div class="col-sm-10 data-text" ng-bind-html="vm.current.membershipPlan.description">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_start_date}}</div>
+                <div class="col-sm-10 data-text">
+                    {{vm.current.startDate  | date:'dd/MM/yyyy'}}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_end_date}}</div>
+                <div class="col-sm-10 data-text">
+                    {{vm.current.endDate  | date:'dd/MM/yyyy'}}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+        <div class="col-md-12">
+            <div class=" data-header">{{resources.models.membership_consumption}} [{{vm.consumption.startDate | date:'dd-MM-yyyy'}} - {{vm.consumption.endDate | date:'dd-MM-yyyy'}}]</div>
+        </div>
+        <div class="col-md-12">
+            <div class="margin"></div>
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_consumption_enquiries}}</div>
+                <div class="col-sm-10 data-text">
+                    <uib-progressbar title="consumption" type="warning" max="vm.current.membershipPlan.maxEnquiriesPerMonth" value="vm.consumption.enquiriesPerMonth">
+                        <span style="color:{{vm.consumption.enquiriesPerMonth==0?'#333':'#fff'}}; white-space:nowrap;font-weight:bold">{{vm.consumption.enquiriesPerMonth}} out of {{vm.current.membershipPlan.maxEnquiriesPerMonth}}</span>
+                    </uib-progressbar>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_consumption_invitations}}</div>
+                <div class="col-sm-10 data-text">
+                    <uib-progressbar title="consumption" type="warning" max="vm.current.membershipPlan.maxInvitationsPerMonth" value="vm.consumption.invitationsPerMonth">
+                        <span style="color:{{vm.consumption.invitationsPerMonth==0?'#333':'#fff'}}; white-space:nowrap;font-weight:bold">{{vm.consumption.invitationsPerMonth}} out of {{vm.current.membershipPlan.maxInvitationsPerMonth}}</span>
+                    </uib-progressbar>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_consumption_item_fields}}</div>
+                <div class="col-sm-10 data-text">
+                    <uib-progressbar title="consumption" type="warning" max="vm.current.membershipPlan.maxItemFields" value="vm.consumption.itemFields">
+                        <span style="color:{{vm.consumption.itemFields==0?'#333':'#fff'}}; white-space:nowrap;font-weight:bold">{{vm.consumption.itemFields}} out of {{vm.current.membershipPlan.maxItemFields}}</span>
+                    </uib-progressbar>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_consumption_items_per_enquiry}}</div>
+                <div class="col-sm-10 data-text">
+                    {{vm.current.membershipPlan.maxItemsPerEnquiry}} Item(s) Per Enquiry
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="data-row">
+                <div class="col-sm-2 data-label">{{resources.models.membership_consumption_contacts_per_invitation}}</div>
+                <div class="col-sm-10 data-text">
+                    {{vm.current.membershipPlan.maxContactsPerInvitation}} Contact(s) Per Invitation
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,4 @@
+﻿<div ng-controller="main.enquiries.invitations.ctrl as vm"  style="background-color:#fff;padding:10px;">
+    <ng-include src="'/App/views/main/enquiries.invitations.view.html'" ng-if="vm.viewMode =='view'"></ng-include>
+    <ng-include src="'/App/views/main/enquiries.invitations.list.html'" ng-if="vm.viewMode == 'list'"></ng-include>
+</div>

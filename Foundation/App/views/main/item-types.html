@@ -1,0 +1,48 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content" slimscroll="ui.layout.getContentSlimscrollOptions()">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+
+
+        <div class="table-responsive">
+            <table st-table="displayedList" st-safe-src="list" class="table table-bordred table-striped  shadow">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <div class="col-md-12">
+                                <input st-search="name" type="search" class="form-control" 
+                                       placeholder="{{resources.models.lookup_name}}" />
+                            </div>
+                            <input mh-search="isDeleted" class="hidden" type="checkbox" ng-model="search.isDeleted" />
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                        <th>{{resources.models.common_name}}</th>
+                        <th><span class="fa fa-user-circle"></span></th>
+
+                        <th style="width:120px">{{resources.models.common_creation_date}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in displayedList track by item.id" data-overlay-wrapper>
+                        <td class="hidden">{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.publicUser.username}}</td>
+                        <td>{{item.creationDate | date:'dd-MM-yyyy':'UTC'}}</td>
+                        
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿<div ng-controller="main.enquiries.preview.ctrl as vm" style="background-color:#fff;padding:10px;">
+    <h2 style="cursor:pointer ;height:300px;background: url('/wwwroot/images/excel.png') no-repeat center center;background-color:rgba(255, 255, 255, 0.5); text-align:center;"
+        ng-click="vm.renderSheet()">
+        Click to view
+    </h2>
+    <div id="sheetWrapper" class="shadow" data-overlay-wrapper  ng-show="vm.showSheet" style="background-color:#fafafa;border-radius:10px;padding:10px;
+            position:fixed;top:20px;bottom:20px;left:20px;right:20px;z-index:10000;border:solid 7px #aaa">
+
+        <div style="text-align:center">
+            <div class="btn-group margin shadow" role="group">
+                <button  type="button" class="btn btn-default" ng-click="vm.cancel()">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+                <button type="button" class="btn btn-info" ng-click="vm.showGuide = true">
+                    Guide
+                    <i class="fa fa-info" style="color:#fff"></i>
+                </button>
+                <button type="button" class="btn" ng-click="vm.showSheet = false">
+                    {{resources.shared.close}}
+                    <i class="fa fa-close" style="color:#fff"></i>
+                </button>
+            </div>
+        </div>
+        <div ng-show="vm.showGuide" class="left padding shadow" style="position:fixed;top:120px;bottom:50px;left:35px;right:35px;z-index:10020;background-color:#fefefe;border:dashed 3px #aaa;overflow:scroll">
+            <button type="button" class="btn pull-right" ng-click="vm.showGuide = false">
+                {{resources.shared.close}}
+                <i class="fa fa-close" style="color:#fff"></i>
+            </button>
+            <ul style="font-size:15px">
+                <li>
+                    Cells marked with <i class="fa fa-edit" style="color:#4CAF50"></i> are editable and you should respond with value.
+                </li>
+                <li>
+                    Cells marked with <i class="fa fa-lock" style="color:#ccc"></i> are read only.
+                </li>
+                <li>
+                    Cells marked with <i class="fa fa-asterisk" style="color:#f44336"></i> are required and you must respond with value.
+                </li>
+                <li>
+                    Cells marked with <i class="fa fa-asterisk" style="color:#ccc"></i> are not required and you can skip responding with value.
+                </li>
+                <li>
+                    Cells marked with <i class="fa fa-info" style="color:#ccc"></i> are read only information.
+                </li>
+                <li>
+                    Cells marked with <i class="fa fa-calculator" style="color:#4CAF50"></i> are calculated based on other cells and are not editable.
+                </li>
+            </ul>
+        </div>
+
+        <div id="excelSheetWrapper" style="position:relative;">
+            <hot-table hot-id="excelSheet" settings="vm.settings" datarows="vm.sheetValues"
+                       style="opacity:1;position:fixed;top:120px;bottom:35px;left:35px;right:35px;z-index:10010;overflow:hidden;">
+            </hot-table>
+        </div>
+    </div>
+</div>

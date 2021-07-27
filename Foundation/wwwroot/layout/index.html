@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+</head>
+<body id="body" class="header-opened footer-opened side-menu-opened opposite-menu-closed">
+    <div id="content" class="content">
+        <div class="page">
+            <h2>Sidenav Push Example</h2>
+            <p>Click on the element below to open the side navigation menu, and push this content to the right. Notice that we add a black see-through background-color to body when the sidenav is opened.</p>
+            <span style="font-size:30px;cursor:pointer" onclick="toggleMenu('side-menu')">&#9776; open</span>
+        </div>
+    </div>
+    <div id="side-menu" class="side-menu">
+        <div class="side-menu-content">
+            <span class="closebtn" onclick="toggleMenu('side-menu')">&times;</span>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <div id="opposite-menu" class="opposite-menu">
+        <div class="side-menu-content">
+            <span class="closebtn" onclick="toggleMenu('opposite-menu')">&times;</span>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    <nav id="header" class="header">
+        <ul class="header-menu">
+            <li>
+                hi there
+            </li>
+            <li>
+                hi 
+            </li>
+
+        </ul>
+    </nav>
+    <div id="footer" class="footer">
+        <nav></nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿
+<div class="modal-header" ng-class="'bg-'+(options.type || 'info')">
+    <h4 class="modal-title" ng-class="'text-'+(options.type || 'info')">
+        <i class="icon fa"
+           ng-class="options.type == 'danger'? 'fa-ban':options.type=='warning'?'fa-exclamation-triangle':options.type=='success'?'fa-check':'fa-info'"></i> 
+        {{ options.title }}
+    </h4>
+</div>
+<div class="modal-body">
+    {{options.message}}
+</div>
+<div class="modal-footer">
+    <button class="btn btn-{{options.type?options.type:'primary'}}" ng-click="$close()">
+        {{options.okText?options.okText:'Close'}}
+    </button>
+</div>

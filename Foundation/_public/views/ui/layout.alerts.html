@@ -1,0 +1,9 @@
+﻿<div ng-repeat="item in ui.alerts.items"  uib-alert ng-class="'alert-' + (item.type || 'info')" 
+     close="ui.alerts.remove($index)">
+    <h4 ng-show="item.title">
+        <i class="icon fa" 
+            ng-class="item.type == 'danger'? 'fa-ban':item.type=='warning'?'fa-exclamation-triangle':item.type=='success'?'fa-check':'fa-info'"></i> 
+        {{item.title}}
+    </h4>
+    {{item.description}}
+</div>

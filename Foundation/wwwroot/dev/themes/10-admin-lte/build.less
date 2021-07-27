@@ -1,0 +1,89 @@
+
+@import "../../bower/admin-lte/build/less/AdminLTE-without-plugins.less";
+@import "../../bower/admin-lte/build/less/skins/_all-skins.less";
+@import "extend.less";
+@brand-primary: #303f9f; //#23c1cc;// #03A9F4; // #337ab7
+@brand-success: #388E3C;
+@brand-info:    #1976D2;
+@brand-warning: #FBC02D;
+@brand-danger:  #E64A19;
+@icon-font-path:          "/wwwroot/fonts/glyphicons/";
+
+//admin-lte variables
+@light-blue: #303f9f;//#23c1cc;//#03A9F4; //#3c8dbc;
+@main-header-height: 80px;
+@body-bg: #fff;
+@sidebar-dark-bg: #283593; //#222d32;
+//Skin
+.side-menu-icon {
+    padding: 10px;
+    background-color: darken(@light-blue, 10%);
+    display: inline-block;
+    width: 50px !important;
+    text-align: center;
+}
+.side-menu-text{
+    padding:5px;
+}
+.sidebar-menu > li > a, .sidebar-menu > li > ul > li > a {
+    padding: 0!important;
+    border-bottom: solid 1px lighten(@light-blue, 5%);
+}
+.main-sidebar .user-panel {
+    background: lighten(@light-blue, 5%);
+}
+.skin-custom {
+    .content-wrapper, .right-side {
+        background-color: #f5f5f5;
+        background-image: url("/wwwroot/images/content-bg.png");
+    }
+    //Navbar
+    .main-header {
+        .navbar {
+            .navbar-variant(#4c4c4c; #fff); //@light-blue
+            .sidebar-toggle {
+                color: #fff;
+
+                &:hover {
+                    background-color: darken(@light-blue, 5%);
+                }
+            }
+
+            @media (max-width: @screen-header-collapse) {
+                .dropdown-menu {
+                    li {
+                        &.divider {
+                            background-color: rgba(255, 255, 255, 0.1);
+                        }
+
+                        a {
+                            color: #fff;
+
+                            &:hover {
+                                background: darken(@light-blue, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //Logo
+        .logo {
+            .logo-variant(darken(#4c4c4c, 5%));
+        }
+
+        li.user-header {
+            background-color: lighten(@light-blue, 5%);
+        }
+    }
+    //Content Header
+    .content-header {
+        background: transparent;
+    }
+    //Create the sidebar skin
+    .skin-dark-sidebar(@light-blue);
+}
+
+.skin-blue.layout-top-nav .main-header > .logo {
+    .logo-variant(@light-blue); //@light-blue
+}

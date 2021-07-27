@@ -1,0 +1,36 @@
+﻿<div ng-controller="main.enquiries.attachmnets.ctrl as vm" style="background-color:#fff;padding:10px;">
+
+    <div class="table-responsive">
+        <table st-table="displayedList" st-safe-src="vm.list" class="table table-bordred table-striped  ">
+            <thead>
+                <tr>
+                    <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                    <th>{{resources.models.common_title}}</th>
+                    <th style="width:70px;"></th>
+                    <th style="width:120px">{{resources.models.common_creation_date}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in displayedList track by item.id" data-overlay-wrapper>
+                    <td class="hidden">{{item.id}}</td>
+                    <td>
+                        <a href="{{item.url}}" target="_blank">{{item.title}}</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{item.url}}" target="_blank">
+                            <img ng-src="{{getFileIcon(item)}}" style="width:64px;max-height:64px;border:0;border-radius:5px;" />
+                        </a>
+                    </td>
+                    <td>{{item.creationDate | date:'dd/MM/yyyy'}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

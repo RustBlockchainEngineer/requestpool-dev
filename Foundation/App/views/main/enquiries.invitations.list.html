@@ -1,0 +1,70 @@
+﻿<div style="background-color:#fff;padding:10px;">
+    <div class="table-responsive shadow">
+        <table id="invitations" st-refresh st-table="vm.displayedList" st-pipe="vm.onlineSearch" class="table table-bordred table-striped ">
+            <thead>
+                <tr>
+                    <th colspan="9">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" ng-click="toggleSearch()">
+                                {{resources.shared.search}}
+                                <span class="pull-right clickable"><i class="glyphicon " ng-class="showSearch?'glyphicon-chevron-up':'glyphicon-chevron-down'"></i></span>
+                            </div>
+                            <div class="panel-body" ng-show="vm.showSearch">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input mh-search="subject" type="search" ng-model="vm.search.subject" class="form-control"
+                                                       placeholder="{{resources.models.common_subject}}" />
+                                                <span class="input-group-addon" ng-click="vm.search.subject=''">
+                                                    <i class="fa fa-undo fa-lg"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                    <th class="hidden"></th>
+                    <th></th>
+                    <th>{{resources.models.common_subject}}</th>
+                    <th class="date-cell">{{resources.models.invitation_post_date}}</th>
+                    <th class="date-cell">{{resources.models.invitation_end_date}}</th>
+                    <th class="date-cell">{{resources.models.common_creation_date}}</th>
+                    <th style="width:50px">{{resources.models.common_functions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.displayedList track by item.id" data-overlay-wrapper>
+                    <td class="hidden">{{item.id}}</td>
+                    <td class="hidden">{{item.isDeleted}}</td>
+                    <td class="{{item.isDraft?'bg-info':item.hasErrors?'bg-danger':'bg-success'}}">
+                        <span class="fa fa-lg" ng-class="{'fa-hourglass-half':item.isDraft, 'fa-warning':!item.isDraft&&item.hasErrors,'fa-check':!item.isDraft&&!item.hasErrors}"></span>
+                        {{item.isDraft?'Draft':'Sent'}}
+                    </td>
+                    <td>{{item.subject}}</td>
+                    <td>{{item.postDate | date:'dd/MM/yyyy hh:mm a':'UTC'}}</td>
+                    <td>{{item.endDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{item.creationDate | date:'dd/MM/yyyy hh:mm a':'UTC'}}</td>
+                    <td>
+                        <button  title="{{resources.shared.info}}" class="btn btn-default btn-xs" ng-click="vm.view(item)">
+                            <span class="fa fa-info-circle fa-lg"></span>
+                        </button>
+                        
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9" class="text-center">
+                        <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

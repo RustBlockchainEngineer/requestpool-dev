@@ -1,0 +1,103 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content" slimscroll="ui.layout.getContentSlimscrollOptions()">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+        <div class="btn-group margin" role="group" aria-label="...">
+            <button type="button" class="btn btn-primary" ui-sref="core/administrators({mode:'form'})">
+                {{resources.shared.add_new}}
+                <i class="fa fa-plus" style="color:#fff"></i>
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table st-table="displayedList" st-safe-src="vm.list" class="table table-bordred table-striped shadow">
+                <thead>
+                    <tr>
+                        <th colspan="8">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" ng-click="vm.toggleSearch()">
+                                    {{resources.shared.search}}
+                                    <span class="pull-right clickable"><i class="glyphicon " ng-class="vm.showSearch?'glyphicon-chevron-up':'glyphicon-chevron-down'"></i></span>
+                                </div>
+                                <div class="panel-body" ng-show="vm.showSearch">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input mh-search="name" type="search" ng-model="vm.search.name" class="form-control"
+                                                           placeholder="{{resources.models.administrator_name}}" />
+                                                    <span class="input-group-addon" ng-click="vm.search.name=''">
+                                                        <i class="fa fa-undo fa-lg"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <input mh-search="username" type="search" ng-model="vm.search.username" class="form-control"
+                                                           placeholder="{{resources.models.administrator_username}}" />
+                                                    <span class="input-group-addon" ng-click="vm.search.username=''">
+                                                        <i class="fa fa-undo fa-lg"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <input mh-search="isDeleted" class="hidden" type="checkbox" ng-model="vm.search.isDeleted" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                        <td></td>
+                        <th>{{resources.models.administrator_name}}</th>
+                        <th>{{resources.models.administrator_username}}</th>
+                        <th>{{resources.models.administrator_email}}</th>
+                        <th>{{resources.models.administrator_phone_number}}</th>
+                        <th style="width:120px">{{resources.shared.creation_date}}</th>
+                        <th style="width:100px">{{resources.shared.creator}}</th>
+                        <th style="width:150px">{{resources.shared.functions}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in displayedList track by item.id" data-overlay-wrapper>
+                        <td class="hidden">{{item.id}}</td>
+                        <td class="text-center" style="width:50px;">
+                            <a href="{{vm.getPhotoIcon(item)}}" target="_blank">
+                                <img ng-src="{{vm.getPhotoIcon(item)}}" style="width:48px;max-height:48px;border:0;border-radius:5px;" />
+                            </a>
+                        </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.username}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phoneNumber}}</td>
+                        <td>{{item.creationDate | date:'dd-MM-yyyy hh:mm':'UTC'}}</td>
+                        <td>{{item.creator.name}}</td>
+                        <td>
+                            <button title="{{resources.shared.activate}}" class="btn btn-xs" ng-class="item.isActive?'btn-success':'btn-danger'" 
+                                    ng-click="vm.toggleActive(item)">
+                                <span class="fa fa-lg" ng-class="item.isActive?'fa-unlock-alt':'fa-lock'"></span>
+                            </button>
+                            <button title="{{resources.shared.info}}" class="btn btn-default btn-xs" ng-click="vm.showDetails(item)">
+                                <span class="fa fa-info-circle fa-lg"></span>
+                            </button>
+                            <button title="{{resources.shared.edit}}" class="btn btn-primary btn-xs" ng-click="vm.edit(item)">
+                                <span class="fa fa-pencil fa-lg"></span>
+                            </button>
+                            <button  title="{{resources.shared.delete}}" class="btn btn-danger btn-xs" ng-click="ui.confirmDelete(vm.remove,item)">
+                                <span class="fa fa-trash fa-lg"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="8" class="text-center">
+                            <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

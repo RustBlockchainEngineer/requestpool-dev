@@ -1,0 +1,159 @@
+﻿<div ng-controller="main.enquiries.items.ctrl as vm" style="background-color:#fff;padding:10px;">
+
+    <h2 style="cursor:pointer ;height:300px;background: url('/wwwroot/images/excel.png') no-repeat center center;background-color:rgba(255, 255, 255, 0.5); text-align:center;"
+        ng-click="vm.renderSheet()">
+        Click to view
+    </h2>
+    <div class="shadow" id="sheetWrapper" data-overlay-wrapper ng-show="vm.showSheet" style="background-color:#fafafa;border-radius:10px;padding:10px;
+            position:fixed;top:20px;bottom:20px;left:20px;right:20px;z-index:10000;border:solid 7px #aaa">
+
+        <div style="text-align:center">
+            <div class="btn-group shadow margin" >
+                <button ng-if="vm.isSaveEnabled" type="button" class="btn btn-default" ng-click="vm.cancel()">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="vm.loadPropertiesDialog()">
+                    Properties Settings
+                    <i class="fa fa-table" style="color:#fff"></i>
+                </button>
+                <button type="button" class="btn btn-info" ng-click="vm.showGuide = true">
+                    Guide
+                    <i class="fa fa-info" style="color:#fff"></i>
+                </button>
+                <button type="button" class="btn" ng-click="vm.showSheet = false">
+                    {{resources.shared.close}}
+                    <i class="fa fa-close" style="color:#fff"></i>
+                </button>
+            </div>
+           
+        </div>
+        <div  ng-show="vm.showGuide" class="left padding shadow" style="position:fixed;top:150px;bottom:50px;left:35px;right:35px;z-index:10020;background-color:#fefefe;border:dashed 3px #aaa;overflow:scroll">
+            <button type="button" class="btn pull-right" ng-click="vm.showGuide = false">
+                {{resources.shared.close}}
+                <i class="fa fa-close" style="color:#fff"></i>
+            </button>
+            <ul style="font-size:15px">
+                <li>
+                    Only rows that has at least one cell filled will be saved.
+                </li>
+                <li>
+                    Use Property Settings to control which properties/columns are included and to configure their settings.
+                </li>
+                <li>
+                    Use cell buttons as follows:<br />
+                    <i class="fa fa-edit" style="color:#4CAF50"></i> / <i class="fa fa-lock" style="color:#ccc"></i> to make cell editable/readonly to responder.
+                    <br />
+                    <i class="fa fa-check" style="color:#4CAF50"></i> / <i class="fa fa-ban" style="color:#ccc"></i> to mark cell as applicable for current item. Not Applicable will make the cell disabled 'Grayed Color' to the responder.
+                    <br />
+                    <i class="fa fa-asterisk" style="color:#f44336"></i> / <i class="fa fa-asterisk" style="color:#ccc"></i> to mark cell as required or not by responder.
+                </li>
+                <li>
+                    You can select multiple cells to apply action on them.
+                </li>
+                <li>
+                    You can set cell value to be a function of other cells in the same row. To apply a formula to a cell, do the following:
+                    <br />
+                    <ol type="A">
+                        <li>From the Property Settings, make the Procperty Column of that cell Editable.</li>
+                        <li>Apply 'Readonly' mode to cells with a formula.</li>
+                        <li>When you find the Calculator symbol in the selected cell(s) it means that formula option is turned on.</li>
+                        <li>A Formula must start with '='</li>
+                        <li>'Property Names' must be enclosed in curly braces { }</li>
+                        <li>Operations allowed are: + - * / ( )</li>
+                        <li>Example: ={property name 1} + {property name 2} * ( {property name 3} / {property name 4} )</li>
+                    </ol>
+                </li>
+                <li>
+                    <b>You cannot define functions inside cells that belong to "Info Only" column, the function will be ignored. 
+                    But you can still refer to "Info Only" properties in functions inside other cells.</b>
+                </li>
+            </ul>
+        </div>
+       
+        <!--settings="vm.settings"-->
+        <div id="excelSheetWrapper">
+            <hot-table hot-id="excelSheet" data-rows="vm.sheetValues"
+                       style="opacity:1;position:fixed;top:150px;bottom:25px;left:35px;right:35px;z-index:10010;overflow:hidden;">
+            </hot-table>
+        </div>
+    </div>
+    <div class="shadow" id="propertiesDialogWrapper" ng-if="vm.showPropertiesDialog"
+         style="opacity:1;position:fixed;top:20px;bottom:20px;left:20px;right:20px;z-index:10020;overflow:scroll;
+                background-color:#fafafa;border-radius:10px;padding:10px;;border:solid 7px #aaa">
+       
+        <div style="text-align:center">
+            <div class="btn-group margin shadow" role="group">
+                <button type="button" class="btn btn-default" ng-click="vm.showPropertiesDialog = false">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+               
+            </div>
+        </div>
+        <div class="alert alert-info" style="font-size:16px;color:#fff">
+            <h4>Guide</h4>
+            <ul>
+                <li>
+                    Toggle "Public" to control columns that appear to responders.
+                </li>
+                <li>
+                    Toggle "Info Only" to define columns that are used for informational purposes only.<br />
+                    Cells in "Info Only" columns cannot be edited by responders, and are used as a basis to compare other columns responses.
+                </li>
+                <li>
+                    You cannot define functions inside cells that belong to "Info Only" column, the function will be ignored.
+                    But you can still refer to "Info Only" properties in functions inside other cells.
+                </li>
+                <li>
+                    Toggle "Included" to specify which properties will be used in this Enquiry.
+                </li>
+            </ul>
+        </div>
+        <table st-table="vm.displayedContacts" st-safe-src="vm.contacts" class="table table-bordred table-striped ">
+            <thead>
+                <tr>
+                    <th class="text-center">Property</th>
+                    <th class="text-center">Type</th>
+                    <th class="text-center">Public</th>
+                    <th class="text-center">Info Only</th>
+                    <th class="text-center" style="width:100px">Order Up</th>
+                    <th class="text-center" style="width:100px">Order Down</th>
+                    <th class="text-center" style="width:50px">Included</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.dialogProperties track by item.id">
+                    <td class="text-center">{{ item.name }}</td>
+                    <td class="text-center">{{ item.propertyType.name }}</td>
+                    <td class="text-center">
+                        <span class="fa fa-eye fa-2x" ng-show="item.isIncluded && item.isPublic"
+                              ng-click="item.isPublic = false"></span>
+                        <span class="fa fa-eye-slash fa-2x" ng-show="item.isIncluded && !item.isPublic"
+                              ng-click="item.isPublic = true"></span>
+                    </td>
+                    <td class="text-center">
+                        <span class="fa fa-info-circle fa-2x" ng-show="item.isIncluded && item.isInfoOnly"
+                              ng-click="item.isInfoOnly = false"></span>
+                        <span class="fa fa-edit fa-2x" ng-show="item.isIncluded && !item.isInfoOnly"
+                              ng-click="item.isInfoOnly = true"></span>
+                    </td>
+                    <td class="text-center">
+                        <span class="fa fa-level-up fa-2x" ng-show="item.isIncluded && $index > 0" ng-click="vm.increaseRank($index)"></span>
+                    </td>
+                    <td class="text-center">
+                        <span class="fa fa-level-down fa-2x" ng-click="vm.decreaseRank($index)"
+                              ng-show="item.isIncluded && $index < vm.dialogProperties.length-1 && vm.dialogProperties[$index+1].isIncluded"></span>
+                    </td>
+                    <td class="text-center">
+                        <span ng-show="item.isIncluded" class="fa fa-check fa-2x text-green" ng-click="vm.removeProperty(item)">
+                        </span>
+                        <span ng-show="!item.isIncluded" class="fa fa-ban fa-2x text-red " ng-click="vm.addProperty(item)">
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

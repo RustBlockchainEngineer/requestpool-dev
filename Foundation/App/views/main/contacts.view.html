@@ -1,0 +1,72 @@
+﻿
+<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div style="text-align:center;font-weight:bold;color:#fff;background-color:#555;padding:2px;font-size:18px;">
+        <span class="fa fa-user-circle"></span>
+        {{vm.model.publicUser.username}}
+    </div>
+    <div class="row">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="contactTypeId">{{resources.models.contact_type}}</label>
+                <div class="col-sm-10">
+                    {{vm.model.contactType.name}}
+                </div>
+            </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="title">{{resources.models.common_name}} *</label>
+            <div class="col-sm-10" style="padding-top:7px;">
+                {{vm.model.name}}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{resources.models.common_phone}}</label>
+                <div class="col-sm-8" style="padding-top:7px;">
+                    {{vm.model.phone}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{resources.models.common_fax}}</label>
+                <div class="col-sm-8" style="padding-top:7px;">
+                    {{vm.model.fax}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">{{resources.models.common_email}}</label>
+                <div class="col-sm-8" style="padding-top:7px;">
+                    {{vm.model.email}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="address">{{resources.models.common_address}}</label>
+                <div class="col-sm-10" style="padding-top:7px;">
+                    {{vm.model.address}}
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="profile">{{resources.models.common_profile}}</label>
+            <div class="col-sm-10" ng-bind-html="vm.model.profile">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">{{resources.models.common_remarks}}</label>
+            <div class="col-sm-10" ng-bind-html="vm.model.remarks">
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+

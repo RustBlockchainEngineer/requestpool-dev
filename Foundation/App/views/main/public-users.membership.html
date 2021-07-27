@@ -1,0 +1,141 @@
+﻿<div ng-controller="main.publicUsers.membership.ctrl as vm" style="background-color:#fff;padding:10px;">
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{resources.common.add_edit}}</div>
+        <div class="panel-body">
+            <form class="form-horizontal" name="form" novalidate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label" for="startDate">{{resources.models.common_start_date}} *</label>
+                            <div class="col-sm-7">
+                                <div class="padding" moment-picker="vm.model.formattedStartDate" format="DD-MM-YYYY"
+                                     max-date="vm.model.endDate"
+                                     ng-model="vm.model.startDate">
+                                    <span class="fa fa-calendar fa-2x"></span>
+                                    <span class="padding">{{vm.model.formattedStartDate}}</span>
+                                </div>
+                                <input class="hidden" type="text" name="startDate" ng-model="vm.model.startDate"
+                                       required />
+                                <div class="text-danger">
+                                    <span ng-if="form.startDate.$touched && form.startDate.$invalid">
+                                        {{resources.errors.common_required}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label" for="endDate">{{resources.models.common_end_date}}</label>
+                            <div class="col-sm-7">
+                                <div class="padding" moment-picker="vm.model.formattedEndDate" format="DD-MM-YYYY"
+                                     min-date="vm.model.startDate"
+                                     ng-model="vm.model.endDate">
+                                    <span class="fa fa-calendar fa-2x"></span>
+                                    <span class="padding">{{vm.model.formattedEndDate}}</span>
+                                    <span ng-show="vm.model.endDate" class="hidden fa fa-remove fa-2x" ng-click="vm.model.endDate=null"></span>
+                                </div>
+                                <input class="hidden" type="text" name="endDate" ng-model="vm.model.endDate"
+                                       required />
+                                <div class="text-danger">
+                                    <span ng-if="form.endDate.$touched && form.endDate.$invalid">
+                                        {{resources.errors.common_required}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label" for="membershipPlanId">{{resources.models.membership_plan}} *</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" name="membershipPlanId" ng-model="vm.model.membershipPlanId"
+                                        ng-options="item.id as item.title for item in vm.membershipPlans | filter:{isDeleted:false,isActive:true}"
+                                        required></select>
+                                <div class="text-danger">
+                                    <span ng-if="form.membershipPlanId.$touched && form.membershipPlanId.$invalid">
+                                        {{resources.errors.common_required}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label" for="downgradeToMembershipPlanId">{{resources.models.membership_downgrade_plan}} *</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" name="downgradeToMembershipPlanId" ng-model="vm.model.downgradeToMembershipPlanId"
+                                        ng-options="item.id as item.title for item in vm.membershipPlans | filter:{isDeleted:false,isActive:true}"></select>
+                                <div class="text-danger">
+                                    <span ng-if="form.downgradeToMembershipPlanId.$touched && form.downgradeToMembershipPlanId.$invalid">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4"></div>
+                    <div>
+                        <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                            {{resources.shared.save}}
+                            <i class="fa fa-check" style="color:#fff"></i>
+                        </button>
+                        <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                            {{resources.shared.cancel}}
+                            <i class="fa fa-ban"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="table-responsive shadow">
+        <table st-table="displayedList" st-safe-src="vm.list" class="table table-bordred table-striped  ">
+            <thead>
+                <tr>
+                    <th colspan="5">
+                        <input mh-search="isDeleted" class="hidden" type="checkbox" ng-model="vm.search.isDeleted" />
+                    </th>
+                </tr>
+                <tr>
+                    <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                    <th>{{resources.models.membership_plan}}</th>
+                    <th class="date-cell">{{resources.models.common_start_date}}</th>
+                    <th class="date-cell">{{resources.models.common_end_date}}</th>
+                    <th class="date-cell">{{resources.models.common_creation_date}}</th>
+                    <th style="width:150px">{{resources.shared.functions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in displayedList track by item.id" data-overlay-wrapper>
+                    <td class="hidden">{{item.id}}</td>
+                    <td>{{item.membershipPlan.title}}</td>
+                    <td>{{item.startDate | date:'dd-MM-yyyy':'UTC'}}</td>
+                    <td>{{item.endDate | date:'dd-MM-yyyy':'UTC'}}</td>
+
+                    <td>{{item.creationDate | date:'dd-MM-yyyy hh:mm a':'UTC'}}</td>
+                    <td>
+                        <button title="{{resources.shared.edit}}" class="btn btn-primary btn-xs" ng-click="vm.edit(item)">
+                            <span class="fa fa-pencil fa-lg"></span>
+                        </button>
+                        <button title="{{resources.shared.delete}}" class="btn btn-danger btn-xs" ng-click="ui.confirmDelete(vm.remove,item)">
+                            <span class="fa fa-trash fa-lg"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

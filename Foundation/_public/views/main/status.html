@@ -1,0 +1,123 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content" slimscroll="ui.layout.getContentSlimscrollOptions()">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+
+        <div class="panel panel-primary shadow">
+            <div class="panel-heading">{{resources.shared.add_edit}}</div>
+            <div class="panel-body">
+                <form class="form-horizontal" name="form" novalidate>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="name">{{resources.models.lookup_name}} *</label>
+                        <div class="col-md-5 has-feedback"  ng-class="form.name.$dirty && form.name.$touched && form.name.$invalid ?'has-error':''">
+                            <input type="text" class="form-control" name="name" ng-model="model.name" 
+                                   required="required"  ng-pattern="resources.validation.common.lookup"/>
+                            <span class="fa fa-remove form-control-feedback" ng-if="form.name.$dirty && form.name.$touched && form.name.$invalid"></span>
+                        </div>
+                        <div class="col-md-1" for="color">
+                            <color-picker ng-model="model.color" options="colorPickerOptions"></color-picker>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="isActive" ng-model="model.isActive" /> 
+                                    {{resources.models.common_is_active}}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="form.$invalid">
+                                {{resources.shared.save}}
+                                <i class="fa fa-check" style="color:#fff"></i>
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="cancel()">
+                                {{resources.shared.cancel}}
+                                <i class="fa fa-ban"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-1"></div>
+                    <div class="text-danger">
+                        <span ng-if="form.name.$touched && form.name.$dirty && form.name.$invalid">
+                            {{resources.modelErrors.common_required + ' '+resources.errors.common_lookup}}
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group">
+                        <label class="control-label col-md-1" for="name_EN">{{resources.models.lookup_name_en}} *</label>
+                        <div class="col-md-5 has-feedback" ng-class="form.name_EN.$dirty && form.name_EN.$touched && form.name_EN.$invalid ?'has-error':''">
+                            <input type="text" class="form-control" name="name_EN" ng-model="model.name_EN"
+                                   required="required" ng-pattern="resources.validation.common.lookup" />
+                            <span class="fa fa-remove form-control-feedback" ng-if="form.name_EN.$dirty && form.name_EN.$touched && form.name_EN.$invalid"></span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-1"></div>
+                    <div class="text-danger">
+                        <span ng-if="form.name_EN.$touched && form.name_EN.$dirty && form.name_EN.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_lookup}}
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table st-table="displayedList" st-safe-src="list" class="table table-bordred table-striped  shadow">
+                <thead>
+                    <tr>
+                        <th colspan="6">
+                            <div class="form-group">
+                                <input st-search="name" type="search" class="form-control"/>
+                            </div>
+                            <input mh-search="isDeleted" class="hidden" type="checkbox" ng-model="search.isDeleted" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="hidden" st-sort="id" st-sort-default="reverse"></th>
+                        <th style="width:40px"></th>
+                        <th>{{resources.models.lookup_name}}</th>
+                        
+                        <th class="date-cell">{{resources.models.common_creation_date}}</th>
+                        <th style="width:100px">{{resources.models.common_creator}}</th>
+                        <th  style="width:170px">{{resources.shared.functions}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in displayedList track by item.id" data-overlay-wrapper>
+                        <td class="hidden">{{item.id}}</td>
+                        <td><div style="width:25px;height:25px;background-color:{{item.color}}"></div></td>
+
+                        <td>{{item.name}}</td>
+                        <td>{{item.creationDate | date:'dd-MM-yyyy':'UTC'}}</td>
+                        <td>{{item.creator.name}}</td>
+                        
+                        <td>
+                            <button class="btn btn-xs" ng-class="item.isDefault?'btn-success':'btn-danger'" ng-click="setDefault(item)">
+                                <span class="fa fa-lg fa-certificate"></span>
+                            </button>
+                            <button class="btn btn-xs" ng-class="item.isActive?'btn-success':'btn-danger'" ng-click="toggleActive(item)">
+                                <span class="fa fa-lg" ng-class="item.isActive?'fa-check':'fa-ban'"></span>
+                            </button>
+                            <button class="btn btn-primary btn-xs" ng-click="edit(item)">
+                                <span class="fa fa-pencil fa-lg"></span>
+                            </button>
+                            <button ng-if="!item.isDefault" class="btn btn-danger btn-xs" ng-click="ui.confirmDelete(remove,item)">
+                                <span class="fa fa-trash fa-lg"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <div st-pagination st-items-by-page="ui.settings.pageSize" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

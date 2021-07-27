@@ -1,0 +1,124 @@
+﻿<div style="width:100%;text-align:center">
+    <div class="btn-group margin" role="group">
+        <button type="button" class="btn btn-primary" ng-click="vm.viewMode = 'form'">
+            {{resources.shared.edit}}
+            <i class="fa fa-pencil" style="color:#fff"></i>
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="vm.copy(vm.model,{isTemplate:true})">
+            Create New Template From This
+            <i class="fa fa-tag" style="color:#fff"></i>
+        </button>
+    </div>
+</div>
+
+<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.enquiry_type}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                   {{vm.model.enquiryType.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.enquiry_status}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.status.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ng-if="!vm.model.isTemplate">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.client}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.client.name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ng-if="!vm.model.isTemplate && vm.model.client && vm.model.client.id">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.project}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.project.title}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.common_subject}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.subject}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="referenceNumber">{{resources.models.common_reference_number}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.referenceNumber}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="prNumber">{{resources.models.enquiry_pr_number}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.prNumber}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="boqNumber">{{resources.models.enquiry_boq_number}}</label>
+                <div class="col-sm-10" style="padding-top:8px">
+                    {{vm.model.boqNumber}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="revisionNumber">{{resources.models.common_revision_number}}</label>
+                <div class="col-sm-8" style="padding-top:8px">
+                    {{vm.model.revisionNumber}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group" ng-show="vm.model.parent">
+                <label class="col-sm-4 control-label">{{resources.models.enquiries_parent}}</label>
+                <div class="col-sm-8" style="padding-top:8px">
+                    <div class="btn btn-primary" ng-click="vm.reloadParent()">
+                        {{vm.model.parent.revisionNumber || '[...]' }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+                <div class="col-sm-10" style="padding-top:8px" ng-bind-html="vm.model.description">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="remarks">{{resources.models.common_remarks}}</label>
+                <div class="col-sm-10" style="padding-top:8px" ng-bind-html="vm.model.remarks">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        
+    </div>
+</form>
+
+
+

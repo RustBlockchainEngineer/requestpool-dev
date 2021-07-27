@@ -1,0 +1,165 @@
+﻿ <!-- sidebar: style can be found in sidebar.less -->
+<!--style="overflow-y:scroll;height:{{ui.layout.getSideMenuHeight()}}"-->
+<section class="sidebar shadow" slimscroll="ui.layout.getSidebarSlimscrollOptions()">
+    <!-- Sidebar user panel -->
+    <!-- search form -->
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    
+    <ul class="sidebar-menu">
+        <li class="user-panel" ui-sref="core/profile" permissions="public_user" ng-class="activeMenuItem == 'profile'?'active-item':''">
+            <div class="margin"></div>
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon" style="text-align:center;padding:0;background-color:#303f9f">
+                    <img ng-src="{{account.info.photo?account.info.photoUrl:ui.settings.images.person}}"
+                         style="max-width:100%;max-height:100%;border:0;border-radius:5px;" />
+                </i>
+                <span class="special-font side-menu-text">{{account.username}}</span>
+                <i class="fa fa-edit fa-2x" title="Edit" style="position:absolute;right:15px;"></i>
+            </a>
+        </li>
+        <li ng-click="logout()" permissions="public_user">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-sign-out fa-2x"></i>
+                <span class="special-font side-menu-text">{{resources.shared.logout}}</span>
+            </a>
+        </li>
+        <li class="header special-font-b hidden">{{resources.menu.main_menu}}</li>
+        <li ui-sref="main/inbox/invitations/list" permissions="public_user" ng-class="activeMenuItem == 'invitations'?'active-item':''">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-inbox fa-2x"></i>
+                <span class="special-font side-menu-text">{{resources.menu.inbox_invitations}}</span>
+            </a>
+        </li>
+        <li ui-sref="main/clients/list" permissions="public_user" ng-class="activeMenuItem == 'clients'?'active-item':''">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-users fa-2x"></i>
+                <span class="special-font side-menu-text">{{resources.menu.clients}}</span>
+            </a>
+        </li>
+        <li ui-sref="main/projects/list" permissions="public_user" ng-class="activeMenuItem == 'projects'?'active-item':''">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-briefcase fa-2x"></i>
+                <span class="special-font  side-menu-text">{{resources.menu.projects}}</span>
+            </a>
+        </li>
+        <li  class="treeview" permissions="public_user" 
+            ng-class="activeMenuItem == 'enquiries' ||activeMenuItem == 'enquiry-types' || activeMenuItem == 'templates' 
+                        || activeMenuItem == 'item-properties' || activeMenuItem == 'items'?'active':''">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-tasks fa-2x"></i>
+                <span class="special-font  side-menu-text">{{resources.menu.enquiries}}</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                </span>
+            </a>
+            <ul  class="treeview-menu">
+                <li ui-sref="main/enquiries/list({isTemplate:false})" ng-class="activeMenuItem == 'enquiries'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-tasks fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.enquiries}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/templates/list({isTemplate:true})" ng-class="activeMenuItem == 'templates'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-tags fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.templates}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/enquiry-types" ng-class="activeMenuItem == 'enquiry-types'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-list-ul fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.enquiry_types}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/items-properties" ng-class="activeMenuItem == 'item-properties'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-th fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.items_properties}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/items/list" ng-class="activeMenuItem == 'items'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-search fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.items}}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="treeview" permissions="public_user"
+                ng-class="activeMenuItem == 'contacts' || activeMenuItem == 'contact-types' ? 'active':''">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-address-book fa-2x"></i>
+                <span class="special-font  side-menu-text">{{resources.menu.contacts}}</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-right pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li ui-sref="main/contacts/list" permissions="public_user" ng-class="activeMenuItem == 'contacts'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-address-book fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.contacts}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/contact-types" ng-class="activeMenuItem == 'contact-types'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-list-ul fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.contact_types}}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li ui-sref="main/membership" permissions="public_user" ng-class="activeMenuItem == 'membership'?'active-item':''">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-credit-card-alt fa-2x"></i>
+                <span class="special-font  side-menu-text">{{resources.menu.membership}}</span>
+            </a>
+        </li>
+        
+        <li class="header hidden"></li>
+        <li class="treeview hidden" permissions="public_user">
+            <a href="javascript:void(0)">
+                <i class="side-menu-icon fa fa-gears fa-2x"></i>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                
+
+                <li ui-sref="main/item-types" class="hidden" ng-class="activeMenuItem == 'item-types'?'active-item':''">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-list-ul fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.item_types}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/enquiry-fields/list" class="hidden">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-th fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.enquiry_fields}}</span>
+                    </a>
+                </li>
+                <li ui-sref="main/request_fields/list" class="hidden">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-th fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.request_fields}}</span>
+                    </a>
+                </li>
+               
+                <li ui-sref="main/settings" permissions="public_user" class="hidden">
+                    <a href="javascript:void(0)">
+                        <i class="side-menu-icon fa fa-gear fa-2x"></i>
+                        <span class="special-font  side-menu-text">{{resources.menu.settings}}</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </li>
+
+
+
+    </ul>
+</section>
+<!-- /.sidebar -->

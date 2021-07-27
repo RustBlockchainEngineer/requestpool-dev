@@ -1,0 +1,111 @@
+﻿<div style="width:100%;text-align:center">
+    <div class="btn-group margin" role="group">
+        <button type="button" class="btn btn-primary" ng-click="vm.isFormMode = true">
+            {{resources.shared.edit}}
+            <i class="fa fa-pencil" style="color:#fff"></i>
+        </button>
+    </div>
+</div>
+
+<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="margin"></div>
+            <div class="text-center">
+                <div class="shadow person-img"
+                     style="background-image: url('{{vm.model.photoUrl?vm.model.photoUrl:ui.settings.images.person}}');">
+                </div>
+            </div>
+            <div class="margin"></div>
+            <div class="form-group text-center">
+                <label class="control-label" for="name">{{resources.models.public_user_otp}}</label>
+                <div style="font-size:20px">
+
+                    {{vm.model.otp}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="email">{{resources.models.common_username}}</label>
+                    <div class="col-sm-8">
+
+                        <div class="form-view-text">{{vm.model.username}}</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="name">{{resources.models.public_user_name}}</label>
+                    <div class="col-sm-8">
+                        <div class="form-view-text">{{vm.model.name}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="phoneNumber">{{resources.models.common_phone}}</label>
+                    <div class="col-sm-8">
+                        <div class="form-view-text">{{vm.model.phoneNumber}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="companyName">{{resources.models.public_user_company_name}}</label>
+                    <div class="col-sm-8">
+                        <div class="form-view-text">{{vm.model.companyName}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">{{resources.models.common_ip}}</label>
+                    <div class="col-sm-8">
+                        <div class="form-view-text">{{vm.model.latestIP}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">{{resources.models.common_geolocation}}</label>
+                    <div class="col-sm-8">
+                        <div class="form-view-text">
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ vm.model.latitude+','+vm.model.longitude}}" target="_blank">
+                                {{vm.model.latitude+','+vm.model.longitude}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="isActive">{{resources.models.common_is_active}}</label>
+
+                    <div class="col-sm-8">
+                        <input disabled type="checkbox" name="isActive" ng-model="vm.model.isActive" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">{{resources.models.common_remarks}}</label>
+                    <div class="col-sm-10">
+                        <div class="form-view-text">{{vm.model.remarks}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

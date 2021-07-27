@@ -1,0 +1,149 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="contactTypeId">{{resources.models.contact_type}} *</label>
+                <div class="col-sm-10">
+                    <div class="full-width" ng-dropdown-multiselect="" extra-settings="vm.dropdownSetting"
+                         options="vm.contactTypes" selected-model="vm.selectedContactTypes" checkboxes="true"></div>
+                    <!--<select class="form-control" name="contactTypeId" ng-model="vm.model.contactType.id"
+                        ng-options="item.id as item.name for item in vm.contactTypes | filter:{isDeleted:false}"
+                        required></select>
+                <div class="text-danger">
+                    <span ng-if="form.contactTypeId.$touched && form.contactTypeId.$invalid">
+                        {{resources.errors.common_required}}
+                    </span>
+                </div>
+            </div> -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="title">{{resources.models.common_name}} *</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" ng-model="vm.model.name"
+                               required ng-pattern="resources.validation.common.full_name" />
+                        <div class="text-danger">
+                            <span ng-if="form.name.$touched && form.name.$invalid">
+                                {{resources.errors.common_required + ' '+resources.errors.common_full_name}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="phone">{{resources.models.common_phone}}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="phone" ng-model="vm.model.phone"
+                               ng-pattern="resources.validation.common.phone" />
+                        <div class="text-danger">
+                            <span ng-if="form.phone.$touched && form.phone.$invalid">
+                                {{resources.errors.common_phone}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="fax">{{resources.models.common_fax}}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="fax" ng-model="vm.model.fax"
+                               ng-pattern="resources.validation.common.phone" />
+                        <div class="text-danger">
+                            <span ng-if="form.fax.$touched && form.fax.$invalid">
+                                {{resources.errors.common_phone}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" for="email">{{resources.models.common_email}} *</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="email" ng-model="vm.model.email"
+                               required ng-pattern="resources.validation.common.email" />
+                        <div class="text-danger">
+                            <span ng-if="form.email.$touched && form.email.$invalid">
+                                {{resources.errors.common_required + ' '+resources.errors.common_email}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="address">{{resources.models.common_address}}</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="address" ng-model="vm.model.address"
+                               ng-pattern="resources.validation.common.address" />
+                        <div class="text-danger">
+                            <span ng-if="form.address.$touched && form.address.$invalid">
+                                {{resources.errors.common_address}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="companyName">Company Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="companyName" ng-model="vm.model.companyName"/>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="profile">{{resources.models.common_profile}}</label>
+                    <div class="col-sm-10">
+                        <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="profile" ng-model="vm.model.profile" rows="5"
+                                  ng-pattern="resources.validation.common.notes">
+                            </textarea>
+                        <div class="text-danger">
+                            <span ng-if="form.profile.$touched && form.profile.$invalid">
+                                {{resources.errors.common_notes}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label" for="remarks">{{resources.models.common_remarks}}</label>
+                    <div class="col-sm-10">
+                        <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="remarks" ng-model="vm.model.remarks" rows="5"
+                                  ng-pattern="resources.validation.common.notes">
+                            </textarea>
+                        <div class="text-danger">
+                            <span ng-if="form.remarks.$touched && form.remarks.$invalid">
+                                {{resources.errors.common_notes}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div style="text-align:center">
+                <div class="btn-group margin" role="group">
+                    <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                        {{resources.shared.save}}
+                        <i class="fa fa-check" style="color:#fff"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                        {{resources.shared.cancel}}
+                        <i class="fa fa-ban"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+

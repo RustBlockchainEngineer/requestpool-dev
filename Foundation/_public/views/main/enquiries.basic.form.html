@@ -1,0 +1,214 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="enquiryType">{{resources.models.enquiry_type}} *</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="vm.model.enquiryType" required>
+                        <ui-select-match>
+                            <span ng-bind="$select.selected.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (vm.enquiryTypes | filter:{isDeleted:false} |filter: $select.search) track by item.id">
+                            <span ng-bind="item.name"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <div class="text-danger">
+                        <span ng-if="form.enquiryTypeId.$touched && form.enquiryTypeId.$dirty  && form.enquiryTypeId.$invalid">
+                            {{resources.errors.common_required}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="status">{{resources.models.enquiry_status}} *</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="vm.model.status" required>
+                        <ui-select-match>
+                            <span ng-bind="$select.selected.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (vm.status | filter:{isDeleted:false} |filter: $select.search) track by item.id">
+                            <span ng-bind="item.name"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <div class="text-danger">
+                        <span ng-if="form.statusId.$touched && form.statusId.$dirty  && form.statusId.$invalid">
+                            {{resources.errors.common_required}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.client}}</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="vm.model.client" spinner-enabled="true">
+                        <ui-select-match allow-clear="true">
+                            <span ng-bind="$select.selected.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (vm.clients | filter:{isDeleted:false} |filter: $select.search) track by item.id"
+                                           refresh="vm.searchClients($select.search)" refresh-delay="100">
+                            <span ng-bind="item.name"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" ng-if="vm.model.client && vm.model.client.id">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.project}}</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="vm.model.project" spinner-enabled="true">
+                        <ui-select-match allow-clear="true">
+                            <span ng-bind="$select.selected.title"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (vm.projects | filter:{isDeleted:false} |filter: $select.search) track by item.id"
+                                           refresh="vm.searchProjects($select.search)" refresh-delay="100">
+                            <span ng-bind="item.title"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.common_subject}}</label>
+                <div class="col-sm-10">
+
+
+                    <input type="text" class="form-control" name="subject" ng-model="vm.model.subject"
+                           required ng-pattern="resources.validation.common.title" />
+                    <div class="text-danger">
+                        <span ng-if="form.subject.$touched && form.subject.$invalid">
+                            {{resources.errors.common_required + ' ' + resources.errors.common_title}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="referenceNumber">{{resources.models.common_reference_number}}</label>
+                <div class="col-sm-10">
+
+                    <input type="text" class="form-control" name="referenceNumber" ng-model="vm.model.referenceNumber"
+                           ng-pattern="resources.validation.common.referenceNumber" />
+                    <div class="text-danger">
+                        <span ng-if="form.referenceNumber.$touched && form.referenceNumber.$invalid">
+                            {{resources.errors.common_reference_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="prNumber">{{resources.models.enquiry_pr_number}}</label>
+                <div class="col-sm-10">
+
+                    <input type="text" class="form-control" name="prNumber" ng-model="vm.model.prNumber"
+                           ng-pattern="resources.validation.common.referenceNumber" />
+                    <div class="text-danger">
+                        <span ng-if="form.prNumber.$touched && form.prNumber.$invalid">
+                            {{resources.errors.common_reference_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="boqNumber">{{resources.models.enquiry_boq_number}}</label>
+                <div class="col-sm-10">
+
+                    <input type="text" class="form-control" name="boqNumber" ng-model="vm.model.boqNumber"
+                           ng-pattern="resources.validation.common.referenceNumber" />
+                    <div class="text-danger">
+                        <span ng-if="form.boqNumber.$touched && form.boqNumber.$invalid">
+                            {{resources.errors.common_reference_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="revisionNumber">{{resources.models.common_revision_number}}</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" name="revisionNumber" ng-model="vm.model.revisionNumber"
+                           ng-pattern="resources.validation.common.revisionNumber" />
+                    <div class="text-danger">
+                        <span ng-if="form.name.$touched && form.name.$invalid">
+                            {{resources.errors.common_revision_number}}
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group" ng-show="vm.model.parent">
+                <label class="col-sm-4 control-label">{{resources.models.enquiries_parent}}</label>
+                <div class="col-sm-8">
+                    <div class="btn btn-primary" ng-click="vm.reloadParent()">
+                        {{vm.model.parent.revisionNumber || '[...]' }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+                <div class="col-sm-10">
+                    <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="description" ng-model="vm.model.description" rows="5"
+                              ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                    <div class="text-danger">
+                        <span ng-if="form.description.$touched && form.description.$invalid">
+                            {{resources.errors.common_notes}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="remarks">{{resources.models.common_remarks}}</label>
+                <div class="col-sm-10">
+                    <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="remarks" ng-model="vm.model.remarks" rows="5"
+                              ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                    <div class="text-danger">
+                        <span ng-if="form.remarks.$touched && form.remarks.$invalid">
+                            {{resources.errors.common_notes}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12" style="text-align:center">
+            <div class="btn-group margin" role="group">
+                <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                    {{resources.shared.save}}
+                    <i class="fa fa-check" style="color:#fff"></i>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+

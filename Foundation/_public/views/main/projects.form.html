@@ -1,0 +1,98 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.client}} *</label>
+                <div class="col-sm-10">
+                    <ui-select ng-model="vm.model.client" required>
+                        <ui-select-match>
+                            <span ng-bind="$select.selected.name"></span>
+                        </ui-select-match>
+                        <ui-select-choices repeat="item in (vm.clients | filter:{isDeleted:false} |filter: $select.search) track by item.id">
+                            <span ng-bind="item.name"></span>
+                        </ui-select-choices>
+                    </ui-select>
+                    <div class="text-danger">
+                        <span ng-if="form.clientId.$touched && form.clientId.$dirty  && form.clientId.$invalid">
+                            {{translation.modelErrors.common_required}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.common_title}} *</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" ng-model="vm.model.title"
+                           required ng-pattern="resources.validation.common.title" />
+                    <div class="text-danger">
+                        <span ng-if="form.title.$touched && form.title.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_title}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="code">{{resources.models.common_code}}</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="code" ng-model="vm.model.code"
+                           required ng-pattern="resources.validation.common.code" />
+                    <div class="text-danger">
+                        <span ng-if="form.code.$touched && form.code.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_code}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+                <div class="col-sm-10">
+                    <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="description" ng-model="vm.model.description" rows="5"
+                              ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                    <div class="text-danger">
+                        <span ng-if="form.description.$touched && form.description.$invalid">
+                            {{resources.errors.common_notes}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="remarks">{{resources.models.common_remarks}}</label>
+                <div class="col-sm-10">
+                    <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="remarks" ng-model="vm.model.remarks" rows="5"
+                              ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                    <div class="text-danger">
+                        <span ng-if="form.remarks.$touched && form.remarks.$invalid">
+                            {{resources.errors.common_notes}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div style="text-align:center">
+            <div class="btn-group margin" role="group">
+                <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                    {{resources.shared.save}}
+                    <i class="fa fa-check" style="color:#fff"></i>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+

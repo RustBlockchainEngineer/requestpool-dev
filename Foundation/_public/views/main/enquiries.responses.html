@@ -1,0 +1,5 @@
+﻿<div ng-controller="main.enquiries.responses.ctrl as vm"  style="background-color:#fff;padding:10px;">
+    <ng-include src="'/_public/views/main/enquiries.responses.list.html'" ng-if="vm.viewMode == 'list'"></ng-include>
+    <ng-include src="'/_public/views/main/enquiries.responses.compare.html'" ng-if="vm.viewMode =='compare'"></ng-include>
+    <ng-include src="'/_public/views/main/enquiries.responses.details.html'" ng-if="vm.viewMode =='details'"></ng-include>
+</div>

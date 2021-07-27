@@ -1,0 +1,48 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+        <uib-tabset  class="shadow">
+            <uib-tab index="0" select="vm.setActiveTab(0)">
+                <uib-tab-heading>
+                    <i class="fa fa-info-circle fa-2x"></i> {{resources.shared.basic_info}}
+                </uib-tab-heading>
+                <ng-include src="'/_public/views/main/enquiries.basic.html'"></ng-include>
+            </uib-tab>
+            <uib-tab index="1" disable="!vm.model.id" select="vm.setActiveTab(1)">
+                <uib-tab-heading>
+                    <i class="fa fa-paperclip fa-2x"></i> {{resources.menu.attachments}}
+                </uib-tab-heading>
+                <ng-include ng-if="vm.activeTab==1" src="'/_public/views/main/enquiries.attachments.html'"></ng-include>
+            </uib-tab>  
+            <uib-tab index="2" disable="!vm.model.id" select="vm.setActiveTab(2)">
+                <uib-tab-heading>
+                    <i class="fa fa-tasks fa-2x"></i> {{resources.menu.items}}
+                </uib-tab-heading>
+                <ng-include ng-if="vm.activeTab==2" src="'/_public/views/main/enquiries.items.html'"></ng-include>
+            </uib-tab>  
+            <uib-tab index="3" disable="!vm.model.id" select="vm.setActiveTab(3)">
+                <uib-tab-heading>
+                    <i class="fa fa-tv fa-2x"></i> {{resources.menu.preview}}
+                </uib-tab-heading>
+                <ng-include ng-if="vm.activeTab==3" src="'/_public/views/main/enquiries.preview.html'"></ng-include>
+            </uib-tab>  
+            
+            <uib-tab index="4" ng-if="!vm.model.isTemplate" disable="!vm.model.id" select="vm.setActiveTab(4)">
+                <uib-tab-heading>
+                    <i class="fa fa-envelope fa-2x"></i> {{resources.menu.invitations}}
+                </uib-tab-heading>
+                <ng-include ng-if="vm.activeTab==4" src="'/_public/views/main/enquiries.invitations.html'"></ng-include>
+            </uib-tab>  
+
+            <uib-tab index="5" ng-if="!vm.model.isTemplate" disable="!vm.model.id" select="vm.setActiveTab(5)">
+                <uib-tab-heading>
+                    <i class="fa fa-mail-reply-all fa-2x"></i> {{resources.menu.responses}}
+                </uib-tab-heading>
+                <ng-include ng-if="vm.activeTab==5" src="'/_public/views/main/enquiries.responses.html'"></ng-include>
+            </uib-tab>  
+        </uib-tabset>
+
+    </div>
+</div>

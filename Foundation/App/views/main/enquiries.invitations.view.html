@@ -1,0 +1,81 @@
+﻿<div style="width:100%;text-align:center">
+    <div class="btn-group margin" role="group">
+        <button type="button" class="btn btn-primary" ng-click="vm.list()">
+            {{resources.shared.back}}
+            <i class="fa fa-chevron-left" style="color:#fff"></i>
+        </button>
+    </div>
+</div>
+
+<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.common_subject}}</label>
+                <div class="col-sm-10">
+                    {{vm.model.subject}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.invitation_post_date}}</label>
+                <div class="col-sm-10">
+                    {{vm.model.postDate | date:'dd/MM/yyyy'}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="subject">{{resources.models.invitation_end_date}}</label>
+                <div class="col-sm-10">
+                    {{vm.model.endDate | date:'dd/MM/yyyy'}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 hidden">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+                <div class="col-sm-10" ng-bind-html="vm.model.description">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            {{resources.models.recipients}}
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordred table-striped ">
+                    <thead>
+                        <tr>
+                            <th class="hidden"></th>
+                            <th>{{resources.models.common_name}}</th>
+                            <th>{{resources.models.common_phone}}</th>
+                            <th>{{resources.models.common_email}}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in vm.model.recipients track by item.id" data-overlay-wrapper>
+                            <td class="hidden">{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.phone}}</td>
+                            <td>{{item.email}}</td>
+                            <td class="{{vm.model.isDraft? '':item.isFailed?'bg-danger':'bg-success'}}">
+                                <div ng-if="!vm.model.isDraft">
+                                    <span class="fa fa-lg" ng-class="{'fa-warning':item.isFailed,'fa-check':!item.isFailed}"></span>
+                                    {{item.failureReason}}
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

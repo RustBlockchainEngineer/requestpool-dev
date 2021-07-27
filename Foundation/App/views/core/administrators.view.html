@@ -1,0 +1,78 @@
+﻿<div style="width:100%;text-align:center">
+    <div class="btn-group margin" role="group">
+        <button type="button" class="btn btn-primary" ng-click="vm.isFormMode = true">
+            {{resources.shared.edit}}
+            <i class="fa fa-pencil" style="color:#fff"></i>
+        </button>
+    </div>
+</div>
+
+<form name="form" novalidate>
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{resources.shared.basic_info}}</div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">{{resources.models.administrator_username}}</label>
+                            <div>
+                               {{vm.model.username}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">{{resources.models.administrator_name}}</label>
+                            <div class="input-group">
+                                {{vm.model.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="email">{{resources.models.administrator_email}}</label>
+                            <div class="input-group">
+                               {{vm.model.name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="phoneNumber">{{resources.models.administrator_phone_number}}</label>
+                            <div class="input-group">
+                                {{vm.model.phoneNumber}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="isActive">{{resources.models.administrator_is_active}}</label>
+                            <input type="checkbox" name="isActive" ng-model="vm.model.isActive" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">{{resources.models.role}}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3" ng-repeat="role in vm.roles track by role.id">
+                    <div class="form-group">
+                        <label>
+                            <input disabled type="checkbox" checklist-model="vm.model.roles" checklist-value="role.name" />
+                            {{resources.roles[role.name]}}
+                            
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

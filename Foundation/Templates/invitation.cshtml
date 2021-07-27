@@ -1,0 +1,23 @@
+﻿@model Foundation.Templates.InvitationTemplateModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    Hello, @Model.Name
+    <br/>
+    <b>@Model.Sender</b> has invited you to reply to their enquiry about <b>@Model.Subject</b>.    
+    <br/>
+    Go to <a href="@Model.Url">@Model.Url</a> and access your account.
+    @if (!String.IsNullOrEmpty(Model.Otp))
+    {
+        <div>
+            This password has been generated for you to login: <b>@Model.Otp</b>
+        </div>
+    }
+    
+</body>
+</html>

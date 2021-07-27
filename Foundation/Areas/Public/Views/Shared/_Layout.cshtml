@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>RequestPool</title>
+	<link rel="shortcut icon" href="/wwwroot/_front/images/ico/favicon.ico">
+	<link rel="apple-touch-icon" sizes="57x57" href="/wwwroot/_front/images/ico/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/wwwroot/_front/images/ico/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/wwwroot/_front/images/ico/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/wwwroot/_front/images/ico/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/wwwroot/_front/images/ico/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/wwwroot/_front/images/ico/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/wwwroot/_front/images/ico/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/wwwroot/_front/images/ico/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/wwwroot/_front/images/ico/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/wwwroot/_front/images/ico/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/wwwroot/_front/images/ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/wwwroot/_front/images/ico/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/wwwroot/_front/images/ico/favicon-16x16.png">
+	
+    @Styles.Render("~/wwwroot/public/css/lib/" + Foundation.Resources.Shared.language_direction)
+    @Styles.Render("~/wwwroot/public/css/" + Foundation.Resources.Shared.language_direction)
+    
+</head>
+<!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
+<!-- the fixed layout is not compatible with sidebar-mini -->
+<body class="hold-transition skin-custom fixed sidebar-mini custom-overlay-wrapper" adminlte-layout>
+    <div class='overlay'><i class='fa fa-refresh fa-spin'></i></div>
+    <!-- Site wrapper -->
+    <div class="wrapper" adminlte-wrapper>
+        <header id="main-header" class="main-header" adminlte-header loggedin>
+            <ng-include src="ui.settings.mainHeader"></ng-include>
+        </header>
+        <!-- =============================================== -->
+        <!-- Left side column. contains the sidebar -->
+        <aside class="main-sidebar shadow+" adminlte-sidebar loggedin>
+            <ng-include src="ui.settings.sideMenu"></ng-include>
+        </aside>
+        <!-- =============================================== -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" adminlte-content>
+            <ng-include src="ui.settings.contentHeader" loggedin></ng-include>
+            <!-- Main content -->
+            <section class="content" style="padding:0;position:relative">
+                <ui-view>
+                    @RenderBody()
+                </ui-view>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer id="main-footer" class="main-footer" adminlte-footer loggedin>
+            <ng-include src="ui.settings.footer"></ng-include>
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark" adminlte-control-sidebar></aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+    @*@Scripts.Render("~/wwwroot/scripts.js")*@
+    
+    @Scripts.Render("~/wwwroot/wysiwyg/")
+    @Scripts.Render("~/wwwroot/excel/")
+
+    @Scripts.Render("~/scripts/public/lib/")
+    @Scripts.Render("~/scripts/public/app/")
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

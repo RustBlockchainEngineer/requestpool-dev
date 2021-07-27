@@ -1,0 +1,4 @@
+﻿<div ng-controller="main.publicUsers.basic.ctrl as vm"  style="background-color:#fff;padding:10px;">
+    <ng-include src="'/app/views/main/public-users.basic.form.html'" ng-if="vm.isFormMode"></ng-include>
+    <ng-include src="'/app/views/main/public-users.basic.view.html'" ng-if="!vm.isFormMode"></ng-include>
+</div>

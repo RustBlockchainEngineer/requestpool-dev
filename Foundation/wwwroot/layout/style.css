@@ -1,0 +1,210 @@
+﻿html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 50px;
+    width: 100%;
+    background-color: #333333;
+    position: fixed;
+    z-index: 0;
+    top: -50px; /*inititally closed*/
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+body.header-opened .header {
+    top: 0px;
+}
+
+body.header-closed .header {
+    top: -50px;
+}
+
+.footer {
+    height: 30px;
+    width: 100%;
+    background-color: #333333;
+    position: fixed;
+    z-index: 0;
+    bottom: -30px; /*inititally closed*/
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+body.footer-opened .footer {
+    bottom: 0px;
+}
+
+body.footer-closed .footer {
+    bottom: -30px;
+}
+
+.content {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 10; /* Stay on top */
+    background-color: #fff;
+    overflow:hidden;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.side-menu {
+    width: 220px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    top: 0px;
+    bottom: 0px;
+    z-index: 0; /* Stay on top */
+    background-color: #20aeb9; /* Black*/
+    overflow: hidden;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    left: -220px; /*inititally closed*/
+}
+
+.opposite-menu {
+    width: 220px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    top: 0px;
+    bottom: 0px;
+    z-index: 0; /* Stay on top */
+    background-color: #20aeb9; /* Black*/
+    overflow: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    right: -220px; /*inititally closed*/
+}
+
+body.header-opened .content, body.header-opened .side-menu, body.header-opened .opposite-menu {
+    top: 50px;
+}
+
+body.footer-opened .content, body.footer-opened .side-menu, body.footer-opened .opposite-menu {
+    bottom: 30px;
+}
+
+/* The navigation menu links */
+.side-menu a, .side-menu .closebtn, .opposite-menu a, .opposite-menu .closebtn {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.opposite-menu .closebtn {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.page {
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: auto;
+    height:100%;
+}
+
+.side-menu-content {
+    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: auto;
+}
+
+/*small screens*/
+@media only screen and (max-width : 991px) {
+    .side-menu, .opposite-menu{
+        z-index:10;
+    }
+    .content{
+        z-index:0;
+    }
+    body.side-menu-opened .side-menu {
+        left: 0px;
+    }
+
+    body.side-menu-closed .side-menu {
+        left: -220px;
+    }
+
+    body.side-menu-opened .content {
+        
+    }
+
+    body.side-menu-closed .content {
+        
+    }
+
+    body.opposite-menu-opened .opposite-menu {
+        right: 0px;
+    }
+
+    body.opposite-menu-closed .opposite-menu {
+        right: -220px;
+    }
+
+    body.opposite-menu-opened .content {
+    }
+
+    body.opposite-menu-closed .content {
+    }
+}
+
+/*large screens */
+@media only screen and (min-width : 992px) {
+    body.side-menu-opened .side-menu {
+        left: 0px;
+    }
+
+    body.side-menu-closed .side-menu {
+        /*left: -220px;*/
+        left:0px;
+    }
+
+    body.side-menu-opened .content {
+        margin-left: 220px;
+    }
+
+    body.side-menu-closed .content {
+        margin-left: 50px;
+    }
+
+    body.opposite-menu-opened .opposite-menu {
+        right: 0px;
+    }
+
+    body.opposite-menu-closed .opposite-menu {
+        right: -220px;
+    }
+
+    body.opposite-menu-opened .content {
+        margin-right: 220px;
+    }
+
+    body.opposite-menu-closed .content {
+        margin-right: 0px;
+    }
+}
+
+
+ul.header-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.header-menu li{
+    display: inline-block;
+    height: 46px;
+    padding:2px;
+    border-right:solid 1px #999;
+}

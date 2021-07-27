@@ -1,0 +1,180 @@
+﻿<form class="form-horizontal" style="background-color:#fff" name="form" novalidate>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">{{resources.models.common_title}} *</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" ng-model="vm.model.title"
+                           required ng-pattern="resources.validation.common.title" />
+                    <div class="text-danger">
+                        <span ng-if="form.title.$touched && form.title.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_title}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="description">{{resources.models.common_description}}</label>
+                <div class="col-sm-10">
+                    <textarea ui-tinymce="ui.tinymceOptions.min" class="form-control" name="description" ng-model="vm.model.description" rows="5"
+                              ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                    <div class="text-danger">
+                        <span ng-if="form.description.$touched && form.description.$invalid">
+                            {{resources.errors.common_notes}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_enquiries_per_month}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="maxEnquiriesPerMonth" ng-model="vm.model.maxEnquiriesPerMonth"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.maxEnquiriesPerMonth.$touched && form.maxEnquiriesPerMonth.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_items_per_enquiry}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="maxItemsPerEnquiry" ng-model="vm.model.maxItemsPerEnquiry"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.maxItemsPerEnquiry.$touched && form.maxItemsPerEnquiry.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_invitations_per_month}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="maxInvitationsPerMonth" ng-model="vm.model.maxInvitationsPerMonth"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.maxInvitationsPerMonth.$touched && form.maxInvitationsPerMonth.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_contacts_per_invitation}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="maxContactsPerInvitation" ng-model="vm.model.maxContactsPerInvitation"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.maxContactsPerInvitation.$touched && form.maxContactsPerInvitation.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_max_item_fields}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="maxItemFields" ng-model="vm.model.maxItemFields"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.maxItemFields.$touched && form.maxItemFields.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_cost_per_month}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="costPerMonth" ng-model="vm.model.costPerMonth"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.costPerMonth.$touched && form.costPerMonth.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-sm-6 control-label" for="rank">{{resources.models.membership_plan_cost_per_year}}</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" name="costPerYear" ng-model="vm.model.costPerYear"
+                           required ng-pattern="resources.validation.common.number" />
+                    <div class="text-danger">
+                        <span ng-if="form.costPerYear.$touched && form.costPerYear.$invalid">
+                            {{resources.errors.common_required + ' '+resources.errors.common_number}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="isActive">{{resources.models.common_is_active}}</label>
+
+            <div class="col-sm-10">
+                <input type="checkbox" name="isActive" ng-model="vm.model.isActive" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="isPublic">{{resources.models.common_is_public}}</label>
+
+            <div class="col-sm-10">
+                <input type="checkbox" name="isPublic" ng-model="vm.model.isPublic" />
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" for="description">{{resources.models.common_remarks}}</label>
+            <div class="col-sm-10">
+                <textarea type="text" class="form-control" name="remarks" ng-model="vm.model.remarks" rows="5"
+                          ng-pattern="resources.validation.common.notes">
+                        </textarea>
+                <div class="text-danger">
+                    <span ng-if="form.remarks.$touched && form.remarks.$invalid">
+                        {{resources.errors.common_notes}}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="text-align:center">
+            <div class="btn-group margin" role="group">
+                <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">
+                    {{resources.shared.save}}
+                    <i class="fa fa-check" style="color:#fff"></i>
+                </button>
+                <button type="button" class="btn btn-default" ng-click="vm.cancel()">
+                    {{resources.shared.cancel}}
+                    <i class="fa fa-ban"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+

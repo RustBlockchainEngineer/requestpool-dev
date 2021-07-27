@@ -1,0 +1,11 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+        <div style="background-color:#fff;padding:10px;">
+            <ng-include src="'/app/views/main/membership-plans.form.html'" ng-if="vm.isFormMode"></ng-include>
+            <ng-include src="'/app/views/main/membership-plans.view.html'" ng-if="!vm.isFormMode"></ng-include>
+        </div>
+    </div>
+</div>

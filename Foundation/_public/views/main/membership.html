@@ -1,0 +1,24 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+        <uib-tabset  class="shadow">
+            <uib-tab index="0" select="vm.setActiveTab(0)">
+                <uib-tab-heading>
+                    <i class="fa fa-info-circle fa-2x"></i> {{resources.shared.basic_info}}
+                </uib-tab-heading>
+                <ng-include src="'/_public/views/main/membership.current.html'"></ng-include>
+            </uib-tab>
+            
+            <uib-tab index="1" select="vm.setActiveTab(1)">
+                <uib-tab-heading>
+                    <i class="fa fa-history fa-2x"></i> {{resources.models.membership_history}}
+                </uib-tab-heading>
+                <ng-include ng-if="vm.activeTab==1" src="'/_public/views/main/membership.list.html'"></ng-include>
+            </uib-tab>  
+            
+        </uib-tabset>
+
+    </div>
+</div>

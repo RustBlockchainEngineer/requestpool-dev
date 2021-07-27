@@ -1,0 +1,39 @@
+﻿ <!-- Logo -->
+<div class="logo shadow">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>S</b></span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>System</b></span>
+</div>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top shadow">
+    <!-- Sidebar toggle button-->
+    <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <li ui-sref="main/public-users/list" permissions="manage_public_users">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-users fa-2x" style="color:#fff"></i>
+                    <div class="small special-font">{{resources.menu.public_users}}</div>
+                </a>
+            </li>
+            <li   ui-sref="main/membership-plans/list" permissions="manage_membership">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-photo fa-2x" style="color:#fff"></i>
+                    <div class="small special-font">{{resources.menu.membership_plans}}</div>
+                </a>
+            </li>
+            <li class="hidden" permissions="manage_reports">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-area-chart fa-2x " style="color:#fff"></i>
+                    <div class="small special-font">{{resources.menu.reports}}</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

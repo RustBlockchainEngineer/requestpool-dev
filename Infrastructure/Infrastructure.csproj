@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{898A5AC5-9C97-404F-B251-F56B5CF69F49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infrastructure</RootNamespace>
+    <AssemblyName>Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="FieldTypes.cs" />
+    <Compile Include="IdentityConfigAdministrator.cs" />
+    <Compile Include="IdentityConfigPublic.cs" />
+    <Compile Include="IdentityConfigGeneral.cs" />
+    <Compile Include="Mapping\CoreMapping.cs" />
+    <Compile Include="Migrations\201710040420540_initial-create.cs" />
+    <Compile Include="Migrations\201710040420540_initial-create.Designer.cs">
+      <DependentUpon>201710040420540_initial-create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091558583_update-1.cs" />
+    <Compile Include="Migrations\201710091558583_update-1.Designer.cs">
+      <DependentUpon>201710091558583_update-1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710111042063_change_int_to_bigint.cs" />
+    <Compile Include="Migrations\201710111042063_change_int_to_bigint.Designer.cs">
+      <DependentUpon>201710111042063_change_int_to_bigint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710211336594_update-2.cs" />
+    <Compile Include="Migrations\201710211336594_update-2.Designer.cs">
+      <DependentUpon>201710211336594_update-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710211339122_update-3.cs" />
+    <Compile Include="Migrations\201710211339122_update-3.Designer.cs">
+      <DependentUpon>201710211339122_update-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710231300394_update-4.cs" />
+    <Compile Include="Migrations\201710231300394_update-4.Designer.cs">
+      <DependentUpon>201710231300394_update-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710281109175_update-5.cs" />
+    <Compile Include="Migrations\201710281109175_update-5.Designer.cs">
+      <DependentUpon>201710281109175_update-5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711061357572_update-6.cs" />
+    <Compile Include="Migrations\201711061357572_update-6.Designer.cs">
+      <DependentUpon>201711061357572_update-6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711100924519_update-7.cs" />
+    <Compile Include="Migrations\201711100924519_update-7.Designer.cs">
+      <DependentUpon>201711100924519_update-7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711120921317_update-8.cs" />
+    <Compile Include="Migrations\201711120921317_update-8.Designer.cs">
+      <DependentUpon>201711120921317_update-8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711291336313_update-9.cs" />
+    <Compile Include="Migrations\201711291336313_update-9.Designer.cs">
+      <DependentUpon>201711291336313_update-9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712070700541_update-10.cs" />
+    <Compile Include="Migrations\201712070700541_update-10.Designer.cs">
+      <DependentUpon>201712070700541_update-10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081425113_update-11-seed.cs" />
+    <Compile Include="Migrations\201712081425113_update-11-seed.Designer.cs">
+      <DependentUpon>201712081425113_update-11-seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712082019006_update-11.cs" />
+    <Compile Include="Migrations\201712082019006_update-11.Designer.cs">
+      <DependentUpon>201712082019006_update-11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712091336218_update-12-seed.cs" />
+    <Compile Include="Migrations\201712091336218_update-12-seed.Designer.cs">
+      <DependentUpon>201712091336218_update-12-seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712092020007_update-13.cs" />
+    <Compile Include="Migrations\201712092020007_update-13.Designer.cs">
+      <DependentUpon>201712092020007_update-13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111500222_update-14.cs" />
+    <Compile Include="Migrations\201712111500222_update-14.Designer.cs">
+      <DependentUpon>201712111500222_update-14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111846099_update-15.cs" />
+    <Compile Include="Migrations\201712111846099_update-15.Designer.cs">
+      <DependentUpon>201712111846099_update-15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231203235_update-16.cs" />
+    <Compile Include="Migrations\201712231203235_update-16.Designer.cs">
+      <DependentUpon>201712231203235_update-16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712311015014_update-17.cs" />
+    <Compile Include="Migrations\201712311015014_update-17.Designer.cs">
+      <DependentUpon>201712311015014_update-17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712311049128_dummy-seed.cs" />
+    <Compile Include="Migrations\201712311049128_dummy-seed.Designer.cs">
+      <DependentUpon>201712311049128_dummy-seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712311056094_dummy-seed-2.cs" />
+    <Compile Include="Migrations\201712311056094_dummy-seed-2.Designer.cs">
+      <DependentUpon>201712311056094_dummy-seed-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712311057026_dummy-seed-3.cs" />
+    <Compile Include="Migrations\201712311057026_dummy-seed-3.Designer.cs">
+      <DependentUpon>201712311057026_dummy-seed-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712311059283_dummy-seed-4.cs" />
+    <Compile Include="Migrations\201712311059283_dummy-seed-4.Designer.cs">
+      <DependentUpon>201712311059283_dummy-seed-4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712311543539_update-18.cs" />
+    <Compile Include="Migrations\201712311543539_update-18.Designer.cs">
+      <DependentUpon>201712311543539_update-18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221518086_add-recpient-response-attachments.cs" />
+    <Compile Include="Migrations\202011221518086_add-recpient-response-attachments.Designer.cs">
+      <DependentUpon>202011221518086_add-recpient-response-attachments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107160845458_VendorContactCategories.cs" />
+    <Compile Include="Migrations\202107160845458_VendorContactCategories.designer.cs">
+      <DependentUpon>202107160845458_VendorContactCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107211201521_add_CompanyName_to_contact.cs" />
+    <Compile Include="Migrations\202107211201521_add_CompanyName_to_contact.designer.cs">
+      <DependentUpon>202107211201521_add_CompanyName_to_contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seeds.cs" />
+    <Compile Include="ActivationCodePurposes.cs" />
+    <Compile Include="SystemStatus.cs" />
+    <Compile Include="SystemRoles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{f08e7992-d80e-4528-b46e-0242b51374e6}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710040420540_initial-create.resx">
+      <DependentUpon>201710040420540_initial-create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091558583_update-1.resx">
+      <DependentUpon>201710091558583_update-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710111042063_change_int_to_bigint.resx">
+      <DependentUpon>201710111042063_change_int_to_bigint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211336594_update-2.resx">
+      <DependentUpon>201710211336594_update-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211339122_update-3.resx">
+      <DependentUpon>201710211339122_update-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231300394_update-4.resx">
+      <DependentUpon>201710231300394_update-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710281109175_update-5.resx">
+      <DependentUpon>201710281109175_update-5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711061357572_update-6.resx">
+      <DependentUpon>201711061357572_update-6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711100924519_update-7.resx">
+      <DependentUpon>201711100924519_update-7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711120921317_update-8.resx">
+      <DependentUpon>201711120921317_update-8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711291336313_update-9.resx">
+      <DependentUpon>201711291336313_update-9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712070700541_update-10.resx">
+      <DependentUpon>201712070700541_update-10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081425113_update-11-seed.resx">
+      <DependentUpon>201712081425113_update-11-seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712082019006_update-11.resx">
+      <DependentUpon>201712082019006_update-11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091336218_update-12-seed.resx">
+      <DependentUpon>201712091336218_update-12-seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712092020007_update-13.resx">
+      <DependentUpon>201712092020007_update-13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111500222_update-14.resx">
+      <DependentUpon>201712111500222_update-14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111846099_update-15.resx">
+      <DependentUpon>201712111846099_update-15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231203235_update-16.resx">
+      <DependentUpon>201712231203235_update-16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311015014_update-17.resx">
+      <DependentUpon>201712311015014_update-17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311049128_dummy-seed.resx">
+      <DependentUpon>201712311049128_dummy-seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311056094_dummy-seed-2.resx">
+      <DependentUpon>201712311056094_dummy-seed-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311057026_dummy-seed-3.resx">
+      <DependentUpon>201712311057026_dummy-seed-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311059283_dummy-seed-4.resx">
+      <DependentUpon>201712311059283_dummy-seed-4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712311543539_update-18.resx">
+      <DependentUpon>201712311543539_update-18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221518086_add-recpient-response-attachments.resx">
+      <DependentUpon>202011221518086_add-recpient-response-attachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107160845458_VendorContactCategories.resx">
+      <DependentUpon>202107160845458_VendorContactCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107211201521_add_CompanyName_to_contact.resx">
+      <DependentUpon>202107211201521_add_CompanyName_to_contact.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

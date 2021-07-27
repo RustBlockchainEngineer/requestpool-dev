@@ -1,0 +1,66 @@
+﻿@font-face {
+    font-family: 'droid-kufi';
+    font-style: normal;
+    font-weight: normal;
+    src: url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.eot) format('embedded-opentype'), url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.woff) format('woff'), url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'kufi-regular';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.eot) format('embedded-opentype'), url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.woff) format('woff'), 
+        url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'kufi-bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.eot) format('embedded-opentype'), url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.woff) format('woff'), url(/wwwroot/fonts/droid-kufi/DroidKufi-Regular.ttf) format('truetype');
+}
+
+* {
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+html * {
+    direction: rtl;
+}
+
+body {
+    direction: rtl;
+}
+
+.special-font {
+    font-family: droid-kufi;
+}
+.special-font-b {
+    font-family: droid-kufi;
+    font-weight:bold;
+}
+.btn, label, th, .panel-heading, uib-tab-heading {
+    font-family: droid-kufi;
+}
+::placeholder {
+    font-family: droid-kufi;
+}
+::-webkit-input-placeholder {
+    font-family: droid-kufi;
+    font-size: 10px;
+}
+
+:-moz-placeholder {
+    font-family: droid-kufi;
+}
+
+::-moz-placeholder {
+    font-family: droid-kufi;
+}
+
+:-ms-input-placeholder {
+    font-family: droid-kufi;
+}
+
+.content-header h1 {
+    font-family: droid-kufi;
+}

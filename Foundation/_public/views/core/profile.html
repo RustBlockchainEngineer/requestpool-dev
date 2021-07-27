@@ -1,0 +1,12 @@
+﻿<div data-overlay-wrapper>
+    <div id="main-content" class="main-content">
+        <section class="alerts">
+            <ng-include src="ui.settings.alerts"></ng-include>
+        </section>
+        <div style="background-color:#fff;padding:10px;">
+            <ng-include src="'/_public/views/core/profile.form.html'" ng-if="vm.viewMode =='form'"></ng-include>
+            <ng-include src="'/_public/views/core/profile.view.html'" ng-if="vm.viewMode == 'view'"></ng-include>
+            <ng-include src="'/_public/views/core/profile.password.html'" ng-if="vm.viewMode == 'password'"></ng-include>
+        </div>
+    </div>
+</div>
